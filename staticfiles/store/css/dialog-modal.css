@@ -1,0 +1,627 @@
+.full_modal_overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1500;
+}
+
+.modal_overlay_background {
+  z-index: 7;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal_overlay_content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.modal_overlay_content.active {
+  z-index: 10;
+}
+
+.modal_position {
+  display: flex;
+  height: 100%;
+  align-content: center;
+  flex-direction: column;
+}
+
+.full_modal_overlay .modal_position_content {
+  height: initial;
+  width: initial;
+  max-width: 88vw;
+  max-height: 90vh;
+}
+
+@media screen and (max-width: 640px) {
+  .full_modal_overlay .modal_position_content {
+    max-height: 95vh;
+  }
+}
+
+.modal_position_content {
+  box-shadow: 0px 8px 38px 5px rgba(0, 0, 0, 0.75);
+  margin: auto;
+  font-weight: 300;
+  color: #969696;
+  font-size: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_position_content > * {
+  min-height: 0;
+  min-width: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.modal_position_top_bar {
+  background: linear-gradient(to right, #cbb0fc 0%, #6f26f7 60%);
+  min-height: 1px;
+  min-width: initial;
+  flex-grow: initial;
+  flex-shrink: initial;
+}
+
+div.modal_position_dismiss {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  z-index: 1;
+  box-sizing: content-box;
+  min-width: initial;
+  min-height: initial;
+  flex-grow: initial;
+  flex-shrink: initial;
+}
+
+.modal_position_dismiss .close_button {
+  width: 14px;
+  height: 14px;
+  padding: 4px;
+  border-radius: 4px;
+  box-sizing: content-box;
+  background-size: cover;
+  background-image: none;
+  cursor: pointer;
+}
+
+.close_button svg {
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+  box-sizing: content-box;
+  fill: #fff;
+  max-width: 320px;
+  max-height: 320px;
+}
+
+.modal_position_dismiss .close_button line {
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 24px;
+}
+
+.dialog_center_vertically {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.dialog_content {
+  display: flex;
+  overflow: visible;
+  position: relative;
+  padding: 24px;
+}
+
+.dialog_content,
+.dialog_content_transition {
+  background: radial-gradient(
+      circle at top left,
+      rgba(54, 5, 138, 0.4) 0%,
+      rgba(75, 81, 92, 0) 60%
+    ),
+    #17023b;
+  user-select: none;
+}
+
+.dialog_content_inner_width {
+  display: flex;
+  overflow: auto;
+  max-width: 600px;
+  flex: 1;
+  flex-direction: column;
+}
+
+.dialog_content_inner_width > form {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+}
+
+.dialog_header {
+  margin-right: 26px;
+  margin-bottom: 4px;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30px;
+  color: #fff;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.dialog_body {
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+  flex: 1;
+  -webkit-app-region: no-drag;
+}
+
+.dialog_body a {
+  color: #6dcff6;
+  text-decoration: none;
+}
+
+.event_display_share_dialog .dialog_body_text {
+  margin-bottom: 10px;
+}
+
+.dialog_body_text {
+  margin-bottom: 32px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 300;
+  user-select: none;
+}
+
+.dialog_label_content {
+  display: flex;
+  border-radius: 3px;
+  padding: 10px;
+  margin-top: 16px;
+  text-align: left;
+  background-color: rgba(54, 5, 138, 0.5);
+  flex-direction: column;
+}
+
+.dialog_label {
+  display: flex;
+  padding: 16px 8px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.dialog_label select {
+  padding: 2px 2px;
+  color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 3px;
+  background: #17023b;
+  font-size: 13px;
+}
+
+.dialog_label .d_label {
+  padding: 0px 8px;
+  margin-bottom: 0px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.d_label {
+  margin-bottom: 4px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  line-height: 19px;
+  font-size: 13px;
+  letter-spacing: initial;
+  user-select: none;
+}
+
+.share_section_ctn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.share_button > img {
+  height: 33px;
+  padding-bottom: 8px;
+  vertical-align: bottom;
+}
+
+.share_icon {
+  position: relative;
+  padding: 6px 50px;
+  border-radius: 2px;
+  box-sizing: content-box;
+  color: #dfe3e6;
+  text-decoration: none;
+  transition-property: background, color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  background: rgba(111, 38, 247, 0.7);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.share_icon:hover {
+  color: #fff;
+  background: rgba(111, 38, 247, 1);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.separator {
+  border-bottom: 1px solid rgba(111, 38, 247, 0.7);
+  height: 1px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  background-color: #161616;
+}
+
+.share_link_ctn {
+  display: flex;
+  margin-top: 10px;
+  font-size: 13.3333px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.share_section_ctn > div:not(:first-child) {
+  margin-left: 8px;
+}
+
+.share_link_ctn span {
+  padding-right: 10px;
+  padding-left: 2px;
+  font-size: 12px;
+}
+
+.share_link {
+  overflow: hidden;
+  width: 485px;
+  height: 32px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 8px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  color: #909090;
+  font-family: "Motiva Sans", Sans-serif;
+  line-height: 14px;
+  background-color: #17023b;
+  -webkit-user-select: none !important; /* Safari */
+  -moz-user-select: none !important; /* Firefox */
+  -ms-user-select: none !important; /* IE 10+ */
+  user-select: none !important; /* Standard syntax */
+  flex-grow: 10;
+  text-overflow: ellipsis;
+  outline: none;
+  resize: none;
+}
+
+.share_link_button_ctn.share_icon {
+  display: flex;
+  position: relative;
+  padding: 6px 25px 6px 25px;
+  border-radius: 2px;
+  color: #dfe3e6;
+  transition-property: background, color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  background: rgba(111, 38, 247, 0.7);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  flex-direction: row;
+  align-items: center;
+}
+
+.share_link_button_ctn.share_icon:hover {
+  color: #fff;
+  background: rgba(111, 38, 247, 1);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.share_link_button_ctn img {
+  height: 18px;
+  margin-top: 0px;
+}
+
+.void_div {
+  padding-top: 10px;
+  text-align: center;
+  min-height: 30px;
+}
+
+.dialog_footer {
+  margin-top: auto;
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+
+button.dialog_button.Primary {
+  font-size: 14px;
+  font-weight: 600;
+  background: transparent;
+  background: linear-gradient(
+    to right,
+    rgba(190, 157, 251, 1) 20%,
+    rgba(88, 9, 236, 1) 100%
+  );
+  background-position: right 0;
+  background-size: 200%;
+}
+
+button.dialog_button.Primary:hover {
+  color: #fff;
+  background-position: 50%;
+}
+
+button.dialog_button::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+  pointer-events: none;
+  user-select: none;
+  content: " ";
+}
+
+.generic_confirm_dialog .dialog_button {
+  min-width: 120px;
+}
+
+button.dialog_button {
+  overflow: visible;
+  display: block;
+  position: relative;
+  box-sizing: content-box;
+  border: 0;
+  padding: 0;
+  margin: 2px 0;
+  border-radius: 2px;
+  width: 100%;
+  font: inherit;
+  line-height: 32px;
+  color: #dfe3e6;
+  font-size: 14px;
+  text-align: center;
+  transition-property: opacity, background, color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  background: #3d4450;
+  background-position: 99% 1%;
+  background-size: 300% 300%;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .dialog_label {
+    flex-direction: column;
+  }
+
+  .dialog_label_content {
+    margin-top: 2px;
+    padding: 0px;
+    background: none;
+  }
+
+  .share_link {
+    min-width: 250px;
+    min-height: 80px;
+  }
+
+  .share_link_ctn span {
+    display: none;
+  }
+
+  .share_link_button_ctn {
+    display: none !important;
+  }
+
+  .share_section_ctn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .share_button img {
+    height: 30px;
+    padding: 5px 25px;
+  }
+}
+
+.dialog_game_area_ctn {
+  position: relative;
+  padding: 15px;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+}
+
+.dialog_body .label_area {
+  display: flex;
+  gap: 15px;
+}
+
+.dialog_body .dialog_game_image {
+  background-color: rgba(0, 0, 0, 0.2) 5;
+  width: 200px;
+  flex-shrink: 0;
+  height: 94px;
+}
+.dialog_body .dialog_game_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dialog_body .dialog_game_info {
+  flex-grow: 1;
+}
+
+.dialog_body .d_game_title {
+  margin-top: 0px;
+}
+
+.dialog_body .d_game_title .title {
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.dialog_body .d_game_platform {
+  justify-content: space-between;
+}
+
+.dialog_body .platform_label {
+  padding-top: 0px;
+}
+
+.dialog_body .game_price {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+.dialog_body .game_price .price {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dialog_body .discount {
+  font-size: 16px;
+  padding: 3px 5px;
+  margin-right: 3px;
+  line-height: 24px;
+}
+
+.dialog_body .price_label {
+  flex-direction: column;
+  align-items: flex-end !important;
+  font-weight: 200;
+  gap: 0px;
+  padding: 0px !important;
+}
+
+.dialog_body .price_label .original_price {
+  font-size: 11px !important;
+  line-height: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0px !important;
+  text-decoration: line-through;
+}
+
+.dialog_body .final_price {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 300;
+  color: #fff;
+  padding: 0px !important;
+}
+
+.dialog_body .d_game_additional {
+  justify-content: end;
+}
+
+.dialog_body .d_game_additional .add_delete {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  color: #606f7f;
+  font-size: 12px;
+}
+
+.dialog_body .add_delete .add,
+.dialog_body .add_delete .delete {
+  color: #beb4d0;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 12px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.dialog_body .add_delete .add:hover,
+.dialog_body .add_delete .delete:hover {
+  color: #fff;
+}
+
+.dialog_body .price {
+  margin-top: 0px;
+}
+
+.dialog_body .original_price::before {
+  content: none;
+}
+
+#detailsPage .dialog_content {
+  min-width: 600px;
+  font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+
+#detailsPage .dialog_footer {
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+  padding-top: 0px;
+}
+
+.dialog_body .topay_bottom {
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.dialog_body .cart_page_btn {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+@media screen and (max-width: 640px) {
+  .full_modal_overlay .modal_position_content {
+    max-height: 95vh;
+  }
+
+  #detailsPage .dialog_content {
+    min-width: auto;
+  }
+
+  .dialog_body .label_area {
+    flex-direction: column;
+  }
+
+  .dialog_body .dialog_game_image {
+    flex-direction: column;
+    align-self: center;
+    width: auto;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  #detailsPage .dialog_footer {
+    flex-direction: column;
+  }
+}

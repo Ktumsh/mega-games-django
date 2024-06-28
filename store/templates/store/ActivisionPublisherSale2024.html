@@ -1,0 +1,727 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="responsive" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2.0"
+    />
+    <link rel="manifest" href="{% static 'manifest.json' %}" />
+    <meta name="theme-color" content="#131019" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="keywords"
+      content="videojuegos, tienda, online, tienda de videojuegos, juegos, ofertas, mega games"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <meta property="og:title" content="Eventos de rebajas - Mega Games" />
+    <meta property="og:description" content="Activision Publisher Sale 2024" />
+    <meta
+      property="og:image"
+      content="{% static 'store/images/mega-games-logo.webp' %}"
+    />
+    <meta
+      property="og:url"
+      content="https://store-megagames.onrender.com/ActivisionPublisherSale2024"
+    />
+    <meta property="og:site_name" content="Mega Games" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mega Games Store" />
+    <meta
+      name="twitter:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="twitter:image"
+      content="{% static 'store/images/mega-games-logo.webp' %}"
+    />
+    <meta
+      name="twitter:url"
+      content="https://store-megagames.onrender.com/ActivisionPublisherSale2024"
+    />
+    <title>Eventos de rebajas | Mega Games</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{% static 'store/images/mega-games-logo.svg' %}"
+    />
+    <link rel="stylesheet" href="{% static 'store/css/store.css' %}" />
+    <link rel="stylesheet" href="{% static 'store/css/sale.css' %}" />
+    <link rel="stylesheet" href="{% static 'store/css/dialog-modal.css' %}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="image"
+      href="{% static 'store/images/sale-page-bg.webp' %}"
+      type="image/webp"
+    />
+    <link
+      rel="preconnect"
+      href="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin
+    />
+    <script>
+      window.userContext = {
+        isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
+        username: "{{ username }}"
+      };
+    </script>
+    <style>
+      body {
+        color: white !important;
+        font-family: "Motiva Sans", Arial, Helvetica, sans-serif !important;
+        background-color: #131019 !important;
+      }
+    </style>
+    <script
+      src="{% static 'store/js/middlewares/authorization.js' %}"
+      type="module"
+    ></script>
+  </head>
+  <body class="v6">
+    <!-- HEADER 🔴 -->
+    <div class="HamburgerMenuSlot"></div>
+    <div class="HeaderSlotMobile"></div>
+    <div class="HeaderSlotDesktop"></div>
+    <!-- NAVBAR 🔴 -->
+    <div class="NavbarSlotPWA"></div>
+    <div class="NavbarSlotMobile"></div>
+    <div class="NavbarSlotDesktop"></div>
+    <main style="min-height: 1000px; background-position: center top">
+      <div class="">
+        <div class="SaleBackgroundCtn">
+          <div
+            class="sale_background"
+            style="
+              display: flex;
+              position: relative;
+              flex-direction: column;
+              background-image: url('{% static 'store/images/sale-page-bg.webp' %}');
+              background-color: rgb(0, 0, 0);
+              background-repeat: repeat-y;
+              --background-scale: 210.52631578947367%;
+            "
+          >
+            <div class="background"></div>
+            <div class="home_sale_ctn" style="margin-top: 0px">
+              <div class="sale_outer_container">
+                <div class="sale_page_logo_ctn container p-0">
+                  <img src="{% static 'store/images/activision-logo.webp' %}" />
+                </div>
+                <div class="presenter_disclaimer">
+                  Este evento de terceros está presentado por
+                  <a
+                    href="https://www.activision.com/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Activision</a
+                  >
+                </div>
+                <div class="">
+                  <div class="sale_section_tab_list_container">
+                    <div class="sale_section_ctn expanded">
+                      <div
+                        style="width: 100%; margin: 0px auto; max-width: 940px"
+                      >
+                        <div class="curator_content">
+                          <div class="curator_box">
+                            <div
+                              class="curator"
+                              style="
+                                background-image: url('{% static 'store/images/activision-logo-sm.webp' %}');
+                              "
+                            ></div>
+                            <div class="curator_box_2">
+                              <div class="curator_2">
+                                <a
+                                  href="https://www.activision.com/"
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                >
+                                  <img
+                                    src="{% static 'store/images/activision-logo-sm.webp' %}"
+                                  />
+                                </a>
+                                <div class="curator_body">
+                                  <div class="curator_top">
+                                    <a
+                                      href="https://www.activision.com/"
+                                      rel="noopener noreferrer"
+                                      target="_blank"
+                                      >Activision</a
+                                    >
+                                    <div>
+                                      Founded in 1979, Activision continues to
+                                      disrupt the world of entertainment with
+                                      its extensive roster of epic blockbuster
+                                      games.
+                                    </div>
+                                  </div>
+                                  <div class="curator_bottom_ctn">
+                                    <div class="curator_bottom">
+                                      <div
+                                        id="followBtn"
+                                        type="button"
+                                        class="follow_btn_curator"
+                                      >
+                                        <div>Seguir</div>
+                                      </div>
+                                      <div class="followers_curator">
+                                        <div>
+                                          <span id="followers">146583</span>
+                                          <br />seguidores
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sale_section_ctn items expanded">
+                      <div
+                        class="sale_section_content"
+                        style="
+                          background-image: linear-gradient(
+                            0deg,
+                            rgb(215, 0, 0) 0%,
+                            rgb(8, 0, 0) 100%
+                          );
+                          background-position: initial;
+                          background-size: initial;
+                          background-attachment: initial;
+                          background-origin: initial;
+                          background-clip: initial;
+                          background-color: initial;
+                        "
+                      >
+                        <div class="sale_section_label_ctn">
+                          <div class="sale_section_label">
+                            <div class="mb-2">
+                              <div
+                                class="label_header"
+                                style="color: rgb(255, 255, 255)"
+                              >
+                                Destacados
+                              </div>
+                            </div>
+                            <div class="label_header_separator"></div>
+                          </div>
+                          <span class="platform_label">
+                            <div class="mb-2">
+                              <span class="platform_img win"></span>
+                              <span class="platform_img xbox"></span>
+                              <span class="platform_img playstation"></span>
+                              <span class="platform_img steam ms-3"></span>
+                            </div>
+                          </span>
+                        </div>
+                        <div id="panel_1" class=""></div>
+                      </div>
+                    </div>
+                    <div class="sale_section_ctn items expanded">
+                      <div
+                        class="sale_section_content"
+                        style="
+                          background-image: linear-gradient(
+                            0deg,
+                            rgb(0, 0, 0) 0%,
+                            rgb(215, 0, 0) 100%
+                          );
+                          background-position: initial;
+                          background-size: initial;
+                          background-attachment: initial;
+                          background-origin: initial;
+                          background-clip: initial;
+                          background-color: initial;
+                        "
+                      >
+                        <div id="panel_2" class=""></div>
+                      </div>
+                    </div>
+                    <div class="sale_section_ctn items expanded">
+                      <div
+                        class="sale_section_content"
+                        style="
+                          background-image: linear-gradient(
+                            0deg,
+                            rgba(30, 3, 78) 0%,
+                            rgb(0, 0, 0) 100%
+                          );
+                          background-position: initial;
+                          background-size: initial;
+                          background-attachment: initial;
+                          background-origin: initial;
+                          background-clip: initial;
+                          background-color: initial;
+                        "
+                      >
+                        <div class="sale_section_label_ctn">
+                          <div class="sale_section_label">
+                            <div class="mb-2">
+                              <div
+                                class="label_header"
+                                style="color: rgb(255, 255, 255)"
+                              >
+                                Free to Play
+                              </div>
+                            </div>
+                            <div class="label_header_separator"></div>
+                          </div>
+                        </div>
+                        <div class="">
+                          <div class="sale_section_grid_ctn">
+                            <div class="panel_card_ctn">
+                              <div class="impression_tracked_element">
+                                <div>
+                                  <div class="panel_card_grid">
+                                    <div class="grid_panel_left_area">
+                                      <a href="#" target="_blank">
+                                        <div class="capsule_decorators"></div>
+                                        <div class="capsule_image_ctn">
+                                          <img
+                                            src="{% static 'store/images/capsules/capsule_01.webp' %}"
+                                            loading="lazy"
+                                            width="460"
+                                            height="215"
+                                            alt="Call of Duty®: Warzone™"
+                                          />
+                                        </div>
+                                      </a>
+                                    </div>
+                                    <div class="grid_panel_right_area">
+                                      <div class="grid_panel_title_ctn">
+                                        <a href="#">
+                                          <div class="grid_panel_title">
+                                            Call of Duty®: Warzone™
+                                          </div>
+                                        </a>
+                                      </div>
+                                      <div class="grid_panel_subtitle_ctn">
+                                        <div
+                                          class="grid_panel_subtitle_game_type"
+                                        >
+                                          <a href="#">Free to Play</a>
+                                          <a href="#">FPS</a>
+                                          <a href="#">Multijugador</a>
+                                          <a href="#">Battle Royale</a>
+                                          <a href="#">Acción</a>
+                                        </div>
+                                        <div class="grid_panel_subtitle_date">
+                                          <div class="game_date">
+                                            16 nov 2022
+                                          </div>
+                                          <div class="platform_label">
+                                            <span
+                                              class="platform_img win"
+                                            ></span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="grid_panel_description">
+                                        Te damos la bienvenida a Call of Duty®:
+                                        Warzone™, una arena enorme de combate
+                                        gratuita que ahora incluye Urzikistán,
+                                        Rebirth Island y Fortune's Keep.
+                                      </div>
+                                      <div class="grid_panel_btn_ctn">
+                                        <div class="grid_panel_btn">
+                                          <div class="cart_btn">
+                                            <span>Comprar</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="grid_additional_image">
+                                        <div class="capsule_image_ctn">
+                                          <img
+                                            class="hero_image_diff"
+                                            src="{% static 'store/images/capsules/capsule_01.webp' %}"
+                                            loading="lazy"
+                                            width="460"
+                                            height="215"
+                                            alt="Call of Duty®: Warzone™"
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sale_section_ctn items expanded">
+                      <div
+                        class="sale_section_content"
+                        style="
+                          background-image: linear-gradient(
+                            0deg,
+                            rgb(215, 0, 0) 0%,
+                            rgb(0, 0, 0) 100%
+                          );
+                          background-position: initial;
+                          background-size: initial;
+                          background-attachment: initial;
+                          background-origin: initial;
+                          background-clip: initial;
+                          background-color: initial;
+                        "
+                      >
+                        <div class="sale_section_label_ctn">
+                          <div class="sale_section_label">
+                            <div class="mb-2">
+                              <div
+                                class="label_header"
+                                style="color: rgb(255, 255, 255)"
+                              >
+                                Franquicia Call of Duty
+                              </div>
+                            </div>
+                            <div class="label_header_separator"></div>
+                          </div>
+                          <span class="platform_label">
+                            <div class="mb-2">
+                              <span class="platform_img win"></span>
+                              <span class="platform_img xbox"></span>
+                              <span class="platform_img playstation"></span>
+                              <span class="platform_img steam ms-3"></span>
+                            </div>
+                          </span>
+                        </div>
+                        <div id="panel_3" class=""></div>
+                      </div>
+                    </div>
+                    <div class="sale_section_ctn items expanded">
+                      <div
+                        class="sale_section_content"
+                        style="
+                          background-image: linear-gradient(
+                            0deg,
+                            rgb(129, 83, 63) 0%,
+                            rgb(2, 2, 2) 100%
+                          );
+                          background-position: initial;
+                          background-size: initial;
+                          background-attachment: initial;
+                          background-origin: initial;
+                          background-clip: initial;
+                          background-color: initial;
+                        "
+                      >
+                        <div class="sale_section_label_ctn">
+                          <div class="sale_section_label">
+                            <div class="mb-2">
+                              <div
+                                class="label_header"
+                                style="color: rgb(255, 255, 255)"
+                              >
+                                Acción
+                              </div>
+                            </div>
+                            <div class="label_header_separator"></div>
+                          </div>
+                          <span class="platform_label">
+                            <div class="mb-2">
+                              <span class="platform_img win"></span>
+                              <span class="platform_img xbox"></span>
+                              <span class="platform_img playstation"></span>
+                              <span class="platform_img nintendo"></span>
+                              <span class="platform_img steam ms-3"></span>
+                            </div>
+                          </span>
+                        </div>
+                        <div id="panel_4" class=""></div>
+                      </div>
+                    </div>
+                    <div class="sale_section_ctn items expanded">
+                      <div
+                        class="sale_section_content pb-sm-5 pb-2"
+                        style="
+                          background-image: linear-gradient(
+                            0deg,
+                            rgb(51, 41, 65) 0%,
+                            rgb(5, 0, 0) 100%
+                          );
+                          background-position: initial;
+                          background-size: initial;
+                          background-attachment: initial;
+                          background-origin: initial;
+                          background-clip: initial;
+                          background-color: initial;
+                        "
+                      >
+                        <div class="sale_section_label_ctn">
+                          <div class="sale_section_label">
+                            <div class="mb-2">
+                              <div
+                                class="label_header"
+                                style="color: rgb(255, 255, 255)"
+                              >
+                                Explora otros títulos
+                              </div>
+                            </div>
+                            <div class="label_header_separator"></div>
+                          </div>
+                          <span class="platform_label">
+                            <div class="mb-2">
+                              <span class="platform_img win"></span>
+                              <span class="platform_img steam ms-3"></span>
+                            </div>
+                          </span>
+                        </div>
+                        <div id="panel_5" class=""></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="share_with_friends">Compartir con amigos</div>
+                <div class="social_share_button">
+                  <svg
+                    class="social_share_icon"
+                    height="100px"
+                    width="100px"
+                    fill="#000000"
+                    xmlns="http://www.w3.org/2000/svg"
+                    version="1.1"
+                    viewBox="0 0 32 32"
+                    x="0px"
+                    y="0px"
+                  >
+                    <path
+                      d="M26.286 0c-3.142 0-5.714 2.572-5.714 5.714 0 0.512 0.074 1.006 0.202 1.479l-10.573 5.287c-1.049-1.332-2.67-2.194-4.487-2.194-3.142 0-5.714 2.572-5.714 5.714s2.572 5.714 5.714 5.714c1.815 0 3.437-0.862 4.486-2.193l10.574 5.287c-0.127 0.473-0.202 0.966-0.202 1.478 0 3.142 2.572 5.714 5.714 5.714s5.714-2.572 5.714-5.714c0-3.142-2.572-5.714-5.714-5.714-1.817 0-3.438 0.862-4.487 2.194l-10.573-5.287c0.128-0.473 0.202-0.967 0.202-1.479s-0.074-1.005-0.202-1.478l10.574-5.287c1.049 1.331 2.67 2.193 4.486 2.193 3.142 0 5.714-2.572 5.714-5.714s-2.572-5.714-5.714-5.714zM26.286 2.286c1.907 0 3.429 1.522 3.429 3.429s-1.522 3.429-3.429 3.429c-1.907 0-3.429-1.522-3.429-3.429s1.522-3.429 3.429-3.429zM5.714 12.571c1.907 0 3.429 1.522 3.429 3.429s-1.522 3.429-3.429 3.429c-1.907 0-3.429-1.522-3.429-3.429s1.522-3.429 3.429-3.429zM26.286 22.857c1.907 0 3.429 1.522 3.429 3.429s-1.522 3.429-3.429 3.429c-1.907 0-3.429-1.522-3.429-3.429s1.522-3.429 3.429-3.429z"
+                    ></path>
+                  </svg>
+                  <span class="social_share_text">Compartir</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="footer_spacer bg-black"></div>
+    <!-- FOOTER -->
+    <div class="FooterSlot">
+      <div class="container"></div>
+    </div>
+    <div class="full_modal_overlay" style="display: none">
+      <div class="modal_overlay_content modal_overlay_background"></div>
+      <div class="modal_overlay_content active" tabindex="-1">
+        <div class="modal_position event_display_share_dialog" tabindex="0">
+          <div class="modal_position_content">
+            <div class="modal_position_top_bar"></div>
+            <div class="modal_position_dismiss">
+              <div class="close_button">
+                <svg
+                  version="1.1"
+                  id="Layer_2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="256px"
+                  height="256px"
+                  viewBox="0 0 256 256"
+                >
+                  <line
+                    fill="none"
+                    stroke="#FFFFFF"
+                    stroke-width="45"
+                    stroke-miterlimit="10"
+                    x1="212"
+                    y1="212"
+                    x2="44"
+                    y2="44"
+                  ></line>
+                  <line
+                    fill="none"
+                    stroke="#FFFFFF"
+                    stroke-width="45"
+                    stroke-miterlimit="10"
+                    x1="44"
+                    y1="212"
+                    x2="212"
+                    y2="44"
+                  ></line>
+                </svg>
+              </div>
+            </div>
+            <div
+              class="dialog_content dialog_layout generic_confirm_dialog dialog_center_vertically"
+            >
+              <div class="dialog_content_inner_width">
+                <form>
+                  <div class="dialog_header">Compartir</div>
+                  <div class="dialog_body">
+                    <div class="dialog_body_text">
+                      <div class="dialog_label_content">
+                        <div class="dialog_label">
+                          <div class="d_label dialog_layout">
+                            Compartir el contenido en
+                          </div>
+                          <div>
+                            <div class="">
+                              <select>
+                                <option>Alemán</option>
+                                <option>Árabe</option>
+                                <option>Búlgaro</option>
+                                <option>Checo</option>
+                                <option>Chino simplificado</option>
+                                <option>Chino tradicional</option>
+                                <option>Coreano</option>
+                                <option>Danés</option>
+                                <option>Español de España</option>
+                                <option selected>
+                                  Español de Hispanoamérica
+                                </option>
+                                <option>Finés</option>
+                                <option>Francés</option>
+                                <option>Griego</option>
+                                <option>Holandés</option>
+                                <option>Húngaro</option>
+                                <option>Indonesio</option>
+                                <option>Inglés</option>
+                                <option>Italiano</option>
+                                <option>Japonés</option>
+                                <option>Noruego</option>
+                                <option>Polaco</option>
+                                <option>Portugués de Brasil</option>
+                                <option>Portugués de Portugal</option>
+                                <option>Rumano</option>
+                                <option>Ruso</option>
+                                <option>Sueco</option>
+                                <option>Tailandés</option>
+                                <option>Turco</option>
+                                <option>Ucraniano</option>
+                                <option>Vietnamita</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="share_section_ctn" style="flex-wrap: wrap">
+                          <div class="">
+                            <a
+                              class="share_button"
+                              href="https://www.facebook.com/sharer/sharer.php?u=https://store-megagames.onrender.com/ActivisionPublisherSale2024"
+                              target="_blank"
+                            >
+                              <img
+                                class="share_icon"
+                                src="{% static 'store/images/icons/facebook-icon.webp' %}"
+                              />
+                            </a>
+                          </div>
+                          <div class="">
+                            <a
+                              class="share_button"
+                              href="https://twitter.com/intent/tweet?url=https://store-megagames.onrender.com/ActivisionPublisherSale2024&text=ActivisionBlizzard+Publisher+Sale+2024"
+                              target="_blank"
+                            >
+                              <img
+                                class="share_icon"
+                                src="{% static 'store/images/icons/twitter-icon.webp' %}"
+                              />
+                            </a>
+                          </div>
+                          <div class="">
+                            <a
+                              class="share_button"
+                              href="https://www.reddit.com/submit?url=https://store-megagames.onrender.com/ActivisionPublisherSale2024&title=¡Gran venta de editores de Activision Blizzard en 2024!"
+                              target="_blank"
+                            >
+                              <img
+                                class="share_icon"
+                                src="{% static 'store/images/icons/reddit-icon.webp' %}"
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <div class="separator"></div>
+                        <div>
+                          <div class="share_link_ctn">
+                            <span>Enlace: </span>
+                            <textarea
+                              id="share_link_text"
+                              class="share_link"
+                              readonly=""
+                            >
+                            https://store-megagames.onrender.com/ActivisionPublisherSale2024</textarea
+                            >
+                            <div
+                              id="copy_button"
+                              class="share_link_button_ctn share_icon"
+                              data-tooltip-text="Copiar el enlace al portapapeles"
+                              title="Copiar el enlace al portapapeles"
+                            >
+                              <img
+                                src="{% static 'store/images/icons/copy-link-icon.svg' %}"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dialog_footer">
+                    <button
+                      type="button"
+                      class="dialog_button dialog_layout Primary"
+                    >
+                      Cerrar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      type="module"
+      src="{% static 'store/js/data/data-publisher.js' %}"
+    ></script>
+    <script
+      defer
+      src="{% static 'store/js/data/layout/load-layout.js' %}"
+    ></script>
+    <script defer src="{% static 'store/js/user/user-events.js' %}"></script>
+    <script
+      defer
+      type="module"
+      src="{% static 'store/js/publisher-events.js' %}"
+    ></script>
+    <script defer src="{% static 'store/js/search.js' %}"></script>
+  </body>
+</html>

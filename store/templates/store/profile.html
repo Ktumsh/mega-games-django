@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="responsive" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2.0"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#131019" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="keywords"
+      content="videojuegos, tienda, online, tienda de videojuegos, juegos, ofertas, mega games"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <meta property="og:title" content="Mega Games Store" />
+    <meta
+      property="og:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      property="og:image"
+      content="https://store-megagames.onrender.com/assets/public/mega-games-logo.webp"
+    />
+    <meta property="og:url" content="https://store-megagames.onrender.com/" />
+    <meta property="og:site_name" content="Mega Games" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mega Games Store" />
+    <meta
+      name="twitter:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="twitter:image"
+      content="https://store-megagames.onrender.com/assets/public/mega-games-logo.webp"
+    />
+    <meta name="twitter:url" content="https://store-megagames.onrender.com/" />
+    <title></title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://store-megagames.onrender.com/assets/public/mega-games-logo.svg"
+    />
+    <link href="{% static 'store/css/store.css' %}" rel="stylesheet" />
+    <link href="{% static 'store/css/profile.css' %}" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preconnect"
+      href="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin
+    />
+    <script>
+        window.userContext = {
+          isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
+          username: "{{ username }}",
+      }
+    </script>
+    <style>
+      body {
+        color: white !important;
+        font-family: "Motiva Sans", Arial, Helvetica, sans-serif !important;
+        background-color: #131019 !important;
+      }
+    </style>
+  </head>
+  <body class="profile_page">
+    <!-- HEADER 🔴 -->
+    <div class="HamburgerMenuSlot"></div>
+    <div class="HeaderSlotMobile"></div>
+    <div class="HeaderSlotDesktop"></div>
+    <!-- NAVBAR 🔴 -->
+    <div class="NavbarSlotPWA"></div>
+    <main
+      class="responsive_page_template_content"
+      id="responsive_page_template_content"
+    >
+      <div class="profile_page">
+        <div class="profile_animated_background">
+          <video
+            playsinline
+            autoplay
+            muted
+            loop
+            poster="{% static 'store/images/profile_background.jpg' %}"
+          >
+            <source
+              src="{% static 'store/images/profile_background_video.webm' %}"
+            />
+            <source
+              src="{% static 'store/images/profile_background_video.mp4' %}"
+            />
+          </video>
+        </div>
+        <div class="profile_header_bg">
+          <div class="profile_header_bg_texture">
+            <div class="profile_header">
+              <div class="profile_header_content">
+                <div class="profile_header_centered_persona">
+                  <div class="persona_name" style="font-size: 24px">
+                    <span class="actual_persona_name">Username</span>
+                  </div>
+                  <div class="header_real_name ellipsis">
+                    <img
+                      class="profile_flag"
+                      src="{% static 'store/images/profile/cl.png' %}"
+                    />
+                    &nbsp; Santiago, Region Metropolitana, Chile
+                  </div>
+                </div>
+
+                <div
+                  class="playerAvatar profile_header_size online"
+                  data-miniprofile="278213816"
+                >
+                  <div class="playerAvatarAutoSizeInner">
+                    <div class="profile_avatar_frame">
+                      <img
+                        src="{% static 'store/images/profile/user-mark.png' %}"
+                      />
+                    </div>
+                    <img
+                      src="{% static 'store/images/profile/user-avatar-animated.gif' %}"
+                    />
+                  </div>
+                </div>
+
+                <div class="profile_header_badgeinfo">
+                  <div class="profile_header_badgeinfo_badge_area">
+                    <div class="profile_header_badge">
+                      <div class="profile_header_badge_instructions">
+                        Puedes destacar una de tus insignias aquí. Selecciona
+                        una en la página de
+                        <a class="whiteLink" href="#">edición del perfil</a>.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="profile_header_actions">
+                    <a class="btn_profile_action btn_medium" href="#">
+                      <span>Modificar perfil</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="profile_header_summary">
+                  <div
+                    class="persona_name persona_name_spacer"
+                    style="font-size: 24px"
+                  >
+                    <span class="actual_persona_name">&nbsp;</span>
+                  </div>
+                  <div class="header_real_name_spacer">&nbsp;</div>
+                  <div class="profile_summary noexpand">
+                    Por el momento no puedes modificar tu perfil, pero al menos
+                    puedes hacerte una idea de cómo se vería 😎
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="profile_content has_profile_background">
+          <div class="profile_rightcol"></div>
+          <div class="profile_leftcol">
+            <div class="profile_customization">
+              <div
+                class="profile_recentgame_header profile_customization_header"
+              >
+                <div>Actividad reciente</div>
+              </div>
+              <div class="profile_customization_block">
+                <div>
+                  <div class="recent_game">
+                    <div class="recent_game_content">
+                      <div class="game_info"></div>
+                      <div class="game_info_stats"></div>
+                    </div>
+                  </div>
+                  <div class="recent_game">
+                    <div class="recent_game_content">
+                      <div class="game_info"></div>
+                      <div class="game_info_stats"></div>
+                    </div>
+                  </div>
+                  <div class="recent_game">
+                    <div class="recent_game_content">
+                      <div class="game_info"></div>
+                      <div class="game_info_stats"></div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="recentgame_quicklinks">
+                    <a class="whiteLink" href="#">Lista de deseados</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- FOOTER -->
+    <div class="FooterSlot"></div>
+    <script>
+      const username = localStorage.getItem("username");
+      document.title = `Comunidad de Mega Games :: ${username}`;
+
+      document.querySelector(".actual_persona_name").textContent = username;
+    </script>
+
+    <script
+      src="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="{% static 'store/js/data/layout/load-layout.js' %}"
+    ></script>
+    <script defer src="{% static 'store/js/user/user-events.js' %}"></script>
+  </body>
+</html>

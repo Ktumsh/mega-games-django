@@ -1,0 +1,448 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="responsive" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2.0"
+    />
+    <link rel="manifest" href="{% static 'manifest.json' %}" />
+    <meta name="theme-color" content="#131019" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="keywords"
+      content="videojuegos, tienda, online, tienda de videojuegos, juegos, ofertas, mega games"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <meta property="og:title" content="Mega Games Store" />
+    <meta
+      property="og:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      property="og:image"
+      content="{% static 'store/images/mega-games-logo.webp' %}"
+    />
+    <meta property="og:url" content="https://store-megagames.onrender.com/" />
+    <meta property="og:site_name" content="Mega Games" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mega Games Store" />
+    <meta
+      name="twitter:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="twitter:image"
+      content="{% static 'store/images/mega-games-logo.webp' %}"
+    />
+    <meta name="twitter:url" content="https://store-megagames.onrender.com/" />
+    <title>Bienvenidos a Mega Games</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{% static 'store/images/mega-games-logo.svg' %}"
+    />
+    <link href="{% static 'store/css/store.css' %}" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="image"
+      href="{% static 'store/images/presentacion3.webp' %}"
+      type="image/webp"
+    />
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="image"
+      href="{% static 'store/images/presentacion3-mobile.webp' %}"
+      type="image/webp"
+    />
+    <link
+      rel="preconnect"
+      href="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin
+    />
+    <script>
+      window.userContext = {
+        isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
+        username: "{{ username }}"
+      };
+    </script>
+    <style>
+      body {
+        color: white !important;
+        font-family: "Motiva Sans", Arial, Helvetica, sans-serif !important;
+        background-color: #131019 !important;
+      }
+    </style>
+  </head>
+  <body class="main">
+    <!-- HEADER -->
+    <div class="HamburgerMenuSlot"></div>
+    <div class="HeaderSlotMobile"></div>
+    <div class="HeaderSlotDesktop"></div>
+    <!-- NAVBAR -->
+    <div class="NavbarSlotPWA"></div>
+    <div class="NavbarSlotMobile"></div>
+    <div class="NavbarSlotDesktop"></div>
+    <div class="container-fluid position-relative">
+      <div
+        class="page_background_holder"
+        style="
+          height: 450px;
+          background-image: url('{% static 'store/images/presentacion3.webp' %}'),
+            linear-gradient(to right, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 50%);
+        "
+      ></div>
+      <div
+        class="page_background_holder_mobile"
+        style="
+          height: 350px;
+          background-image: url('{% static 'store/images/presentacion3-mobile.webp' %}'),
+            linear-gradient(to right, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 50%);
+        "
+      ></div>
+    </div>
+    <div class="divider_header"></div>
+    <div class="home_page_takeover_link">
+      <a class="home_page_takeover_sizer" href="/ActivisionPublisherSale2024">
+        <img
+          style="height: 385px"
+          src="{% static 'store/images/blank.gif' %}"
+          alt=""
+        />
+      </a>
+    </div>
+    <main>
+      <!-- CARRUSEL -->
+      <div class="home_ctn bg-gradient-p0">
+        <section class="home_page_content py-4">
+          <h2 class="home_page_content_title">DESTACADOS Y RECOMENDADOS</h2>
+          <div
+            id="carouselMaincap"
+            class="carousel_container maincap"
+            data-bs-ride="carousel"
+          >
+            <div
+              id="carouselMaincapItems"
+              class="carousel_items responsive_scroll_snap_ctn"
+            ></div>
+            <div class="carousel_thumbs">
+              <div data-bs-target="#carouselMaincap" class="active"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+              <div data-bs-target="#carouselMaincap"></div>
+            </div>
+            <div
+              class="arrow left"
+              data-bs-target="#carouselMaincap"
+              data-bs-slide="prev"
+            >
+              <div></div>
+            </div>
+            <div
+              class="arrow right"
+              data-bs-target="#carouselMaincap"
+              data-bs-slide="next"
+            >
+              <div></div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- CARDS OFERTAS -->
+      <section class="py-5 border-top-p3 bg-gradient-p1">
+        <div class="container">
+          <div class="d-flex justify-content-center align-items-center">
+            <div
+              id="neon-text"
+              class="d-flex justify-content-center align-items-center px-2 px-sm-5 mb-2"
+            >
+              <h2
+                class="d-inline-flex justify-content-center align-items-center my-0 py-1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#55d4ff"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-star me-2 text-shadow"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
+                  />
+                </svg>
+                OFERTAS ESP<span class="offset">E</span>CIALES
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#55d4ff"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-star ms-1"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
+                  />
+                </svg>
+              </h2>
+            </div>
+          </div>
+          <div id="carouselOfertas" class="carousel_cards mt-4">
+            <div id="cardsContainer1" class="inner_carousel"></div>
+            <div
+              class="arrow left"
+              data-bs-target="#carouselOfertas"
+              data-bs-slide="prev"
+            >
+              <div></div>
+            </div>
+            <div
+              class="arrow right"
+              data-bs-target="#carouselOfertas"
+              data-bs-slide="next"
+            >
+              <div></div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center pt-4">
+            <a
+              type="button"
+              class="btn-show-all motiva-sans"
+              href="/ofertas-especiales"
+              >Ver todo</a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- CARDS JUEGOS -->
+      <section class="bg-base py-5">
+        <div class="container">
+          <h2 class="page_title">Juegos populares</h2>
+          <div id="carouselJuegos" class="carousel_cards mt-4">
+            <div id="cardsContainer2" class="inner_carousel"></div>
+            <div
+              class="arrow left"
+              data-bs-target="#carouselJuegos"
+              data-bs-slide="prev"
+            >
+              <div></div>
+            </div>
+            <div
+              class="arrow right"
+              data-bs-target="#carouselJuegos"
+              data-bs-slide="next"
+            >
+              <div></div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center pt-4">
+            <a
+              href="/juegos-populares"
+              type="button"
+              class="btn-show-all2 motiva-sans"
+              >Ver todo</a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- CARDS TARJETAS DE REGALO -->
+      <section class="py-5">
+        <div class="container">
+          <h2 class="page_title">Juegos y tarjetas de regalo más vendidas</h2>
+          <div id="carouselTarjetas" class="carousel_cards mt-4">
+            <div id="cardsContainer3" class="inner_carousel"></div>
+            <div
+              class="arrow left"
+              data-bs-target="#carouselTarjetas"
+              data-bs-slide="prev"
+            >
+              <div></div>
+            </div>
+            <div
+              class="arrow right"
+              data-bs-target="#carouselTarjetas"
+              data-bs-slide="next"
+            >
+              <div></div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center pt-4">
+            <a
+              href="/juegos-y-tarjetas"
+              type="button"
+              class="btn-show-all motiva-sans"
+              >Ver todo</a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- CARDS GÉNEROS -->
+      <section class="bg-base py-5">
+        <div class="container">
+          <h2 class="page_title">Géneros</h2>
+          <div id="genCardContainer" class="gen-card-container mt-4"></div>
+          <div class="d-flex justify-content-center pt-4">
+            <button
+              id="load-more-generos"
+              class="btn-show-all2 motiva-sans"
+              type="button"
+            >
+              Cargar más <span class="loader" id="loader"></span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- FOOTER -->
+    <div class="FooterSlot"></div>
+    <!-- MODAL DOWNLOAD APP -->
+    <div id="downloadAppModal" class="full_modal_overlay" style="display: none">
+      <div class="modal_overlay_content modal_overlay_background"></div>
+      <div class="modal_overlay_content active" tabindex="-1">
+        <div class="modal_position event_display_share_dialog" tabindex="0">
+          <div class="modal_position_content">
+            <div class="modal_position_top_bar"></div>
+            <div class="modal_position_dismiss">
+              <div class="close_button">
+                <svg
+                  version="1.1"
+                  id="Layer_2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="256px"
+                  height="256px"
+                  viewBox="0 0 256 256"
+                >
+                  <line
+                    fill="none"
+                    stroke="#FFFFFF"
+                    stroke-width="45"
+                    stroke-miterlimit="10"
+                    x1="212"
+                    y1="212"
+                    x2="44"
+                    y2="44"
+                  ></line>
+                  <line
+                    fill="none"
+                    stroke="#FFFFFF"
+                    stroke-width="45"
+                    stroke-miterlimit="10"
+                    x1="44"
+                    y1="212"
+                    x2="212"
+                    y2="44"
+                  ></line>
+                </svg>
+              </div>
+            </div>
+            <div
+              class="dialog_content dialog_layout generic_confirm_dialog dialog_center_vertically"
+            >
+              <div class="dialog_content_inner_width">
+                <div>
+                  <div class="about_greeting_header">
+                    <div>
+                      <img
+                        width="36px"
+                        height="auto"
+                        src="{% static 'store/images/mega-games-logo.png' %}"
+                        alt="Mega Games Logo"
+                      />
+                    </div>
+                    Mega Games<span>®️</span>
+                  </div>
+                  <div class="about_subtitle">
+                    El destino definitivo para gamers.<br /><span
+                      >¡Instala la app para una mejor experiencia!</span
+                    >
+                  </div>
+                  <div class="about_install_wrapper">
+                    <div class="about_install android">
+                      <button id="installApp" type="button">
+                        Instalar Mega Games
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    id="iosInfo"
+                    class="about_subtitle"
+                    style="display: none"
+                  >
+                    <p>
+                      Para instalar la aplicación en tu dispositivo iOS, sigue
+                      estos pasos:
+                    </p>
+                    <ol>
+                      <li>
+                        Presiona el botón de compartir en la parte inferior de
+                        la pantalla.
+                      </li>
+                      <li>Selecciona "Agregar a la pantalla de inicio".</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="{% static 'store/js/data/layout/load-layout.js' %}"
+    ></script>
+    <script defer src="{% static 'store/js/user/user-events.js' %}"></script>
+    <script defer src="{% static 'store/js/data/home-maincap.js' %}"></script>
+    <script defer src="{% static 'store/js/data/data-home.js' %}"></script>
+    <script defer src="{% static 'store/js/carousel.js' %}"></script>
+    <script defer src="{% static 'store/js/search.js' %}"></script>
+    <script defer src="{% static 'store/js/install-app-modal.js' %}"></script>
+  </body>
+</html>

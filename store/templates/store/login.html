@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="responsive" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2.0"
+    />
+    <link rel="manifest" href="{% static 'manifest.json' %}" />
+    <meta name="theme-color" content="#131019" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="keywords"
+      content="videojuegos, tienda, online, tienda de videojuegos, juegos, ofertas, mega games"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <meta property="og:title" content="Mega Games Store" />
+    <meta
+      property="og:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      property="og:image"
+      content="{% static 'images/mega-games-logo.webp' %}"
+    />
+    <meta property="og:url" content="https://store-megagames.onrender.com/" />
+    <meta property="og:site_name" content="Mega Games" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mega Games Store" />
+    <meta
+      name="twitter:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="twitter:image"
+      content="{% static 'images/mega-games-logo.webp' %}"
+    />
+    <meta name="twitter:url" content="https://store-megagames.onrender.com/" />
+    <title>Iniciar sesión</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{% static 'store/images/mega-games-logo.svg' %}"
+    />
+    <link href="{% static 'store/css/store.css' %}" rel="stylesheet" />
+    <link href="{% static 'store/css/user.css' %}" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script>
+      window.userContext = {
+        isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
+        username: "{{ username }}"
+      };
+    </script>
+    <style>
+      body {
+        color: white !important;
+        font-family: "Motiva Sans", Arial, Helvetica, sans-serif !important;
+        background-color: #131019 !important;
+      }
+    </style>
+  </head>
+  <body class="login">
+    <!-- HEADER 🔴 -->
+    <div class="HamburgerMenuSlot"></div>
+    <div class="HeaderSlotMobile"></div>
+    <div class="HeaderSlotDesktop"></div>
+    <!-- LOGIN -->
+    <div class="page_content">
+      <div>
+        <div class="login_page_content">
+          <div class="login_form">
+            <div class="login_form_ctn" style="gap: 32px">
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                  margin: 8px 16px;
+                "
+              >
+                <div class="login_form_title">Iniciar sesión</div>
+              </div>
+              <div class="form_area">
+                <div class="form_ctn">
+                  <form
+                    id="login"
+                    class="form"
+                    action="{% url 'login' %}"
+                    method="post"
+                  >
+                    {% csrf_token %}
+                    <div class="input_area">
+                      <label for="identifier"
+                        >Inicia sesión con tu usuario o correo
+                        electrónico</label
+                      >
+                      <input
+                        type="text"
+                        name="identifier"
+                        id="identifier"
+                        value=""
+                        autofocus
+                      />
+                    </div>
+                    <div class="input_area">
+                      <label for="password">Contraseña</label>
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        value=""
+                      />
+                    </div>
+                    <div>
+                      <div class="remeberme_ctn">
+                        <div class="check_area">
+                          <div class="check">
+                            <svg
+                              version="1.1"
+                              id="base"
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="SVGIcon_Button SVGIcon_Check"
+                              x="0px"
+                              y="0px"
+                              width="256px"
+                              height="256px"
+                              viewBox="0 0 256 256"
+                              stroke-width="35"
+                              stroke="#fff"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            >
+                              <polyline
+                                fill="none"
+                                points="49.5,147.75 95,210.75 206.5,45.25 "
+                              ></polyline>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="remeberme">Recordarme</div>
+                      </div>
+                    </div>
+                    <div class="login_btn">
+                      <button class="send_form" type="submit">
+                        Iniciar sesión
+                      </button>
+                    </div>
+                    <div class="divider">&nbsp;</div>
+                    <div id="error_msg" class="hidden">
+                      Comprueba tu contraseña y nombre de usuario e inténtalo de
+                      nuevo.
+                    </div>
+                    <a class="help_cant_login" href="#"></a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="login_bottom_row">
+        <div class="login_btn_ctn login_bottom_row_item">
+          <div class="headline">¿Es la primera vez que usas Mega Games?</div>
+          <a
+            href="{% url 'signup' %}"
+            target="_top"
+            class="login_create_btn btn_megames btn_medium"
+          >
+            <span>Crea una cuenta</span>
+          </a>
+        </div>
+        <div class="login_bottom_row_item">
+          <div class="subtext">
+            Es gratis y muy fácil. Descubre miles de juegos para jugar con
+            millones de nuevos amigos.
+            <a class="login_join_desc about_link" href="{% url 'about' %}"
+              >Más información acerca de</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <div class="FooterSlot"></div>
+
+    <script
+      src="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const isAuthenticated = {{ is_authenticated|lower }};
+      const username = "{{ username }}";
+    </script>
+    <script src="{% static 'store/js/user/login.js' %}"></script>
+    <script
+      defer
+      src="{% static 'store/js/data/layout/load-layout.js' %}"
+    ></script>
+    <script defer src="{% static 'store/js/search.js' %}"></script>
+  </body>
+</html>
