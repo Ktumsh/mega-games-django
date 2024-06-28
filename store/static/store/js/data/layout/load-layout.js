@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="menu_user_person person online">
                 <div class="playerAvatar online">
                   <a id="profileLink" href="#" aria-label="Ver tu perfil">
-                    <img id="user_avatar" src="https://store-megagames.onrender.com/assets/public/profile/user-avatar.jpg" alt="">
+                    <img id="user_avatar" src="/static/store/images/profile/user-avatar.jpg" alt="">
                   </a>
                 </div>
                 <a id="user_name" href="">Username</a>
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="mainmenu_footer_spacer"></div>
           <div class="mainmenu_footer">
             <div class="mainmenu_footer_logo">
-              <img src="https://store-megagames.onrender.com/assets/public/mega-games-logo.svg" height="36" alt="Mega Games" />
+              <img src="/static/store/images/mega-games-logo.svg" height="36" alt="Mega Games" />
               <span class="grotesk fs-6">Mega Games</span>
             </div>
             © 2024 Mega Games Store. Página creada con fines didácticos e inspirada en Steam y Eneba. No tiene relación oficial con estas marcas. Las imágenes utilizadas son para prácticas educativas. Nombres y marcas mencionados son propiedad de sus respectivos dueños.
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="logo">
             <span id="logo_holder">
                 <a href="/" aria-label="Enlace a la página de inicio de Mega Games">
-                    <img src="https://store-megagames.onrender.com/assets/public/mega-games-logo.svg" width="36" height="36" alt="Enlace a la página de inicio de Mega Games">
+                    <img src="/static/store/images/mega-games-logo.svg" width="36" height="36" alt="Enlace a la página de inicio de Mega Games">
                 </a>
                 <a href="/">Mega Games</a>
             </span>
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div id="language_dropdown" class="popup_block_new" style="display: none;"></div>
             </div>
             <a id="user_img" class="user_avatar playerAvatar online" aria-label="Ver tu perfil" href="#">
-              <img src="https://store-megagames.onrender.com/assets/public/profile/user-avatar.jpg" alt="" loading="lazy">
+              <img src="/static/store/images/profile/user-avatar.jpg" alt="" loading="lazy">
             </a>
         </div>
     </nav>
@@ -304,7 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="responsive_header_logo">
           <a href="/">
             <div id="responsive_header_logo">
-              <img src="https://store-megagames.onrender.com/assets/public/mega-games-logo.svg" height="36" alt="Mega Games" />
+              <img src="/static/store/images/mega-games-logo.svg" height="36" alt="Mega Games" />
               <span class="grotesk ps-2 fs-6 text-white">Mega Games</span>
             </div>
           </a>
@@ -962,7 +962,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="responsive_header_logo">
         <a href="/">
           <div id="responsive_header_logo">
-            <img src="https://store-megagames.onrender.com/assets/public/mega-games-logo.svg" height="36" alt="Mega Games" />
+            <img src="/static/store/images/mega-games-logo.svg" height="36" alt="Mega Games" />
             <span class="grotesk ps-2 fs-6 text-white">Mega Games</span>
           </div>
         </a>
@@ -989,7 +989,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="responsive_header_logo">
           <a href="/">
             <div id="responsive_header_logo">
-              <img src="https://store-megagames.onrender.com/assets/public/mega-games-logo.svg" height="36" alt="Mega Games" />
+              <img src="/static/store/images/mega-games-logo.svg" height="36" alt="Mega Games" />
               <span class="grotesk ps-2 fs-6 text-white">Mega Games</span>
             </div>
           </a>
