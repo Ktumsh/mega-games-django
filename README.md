@@ -124,9 +124,9 @@ Abre un navegador web y navega a `http://127.0.0.1:8000/` para ver la aplicació
 ### Configuración de variables de entorno
 
 1. Copia el archivo `.env.demo` y renómbralo a `.env`:
-   ```bash
-   cp .env.demo .env
-   ```
+```bash
+cp .env.demo .env
+```
 2. Abre el archivo .env y llena los valores necesarios:
 ```bash
 SECRET_KEY=your-actual-secret-key
