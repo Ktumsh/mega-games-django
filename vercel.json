@@ -5,7 +5,7 @@
       "src": "manage.py",
       "use": "@vercel/python",
       "config": {
-        "includeFiles": ["build.sh"]
+        "installCommand": "sh build.sh"
       }
     },
     {
@@ -22,13 +22,5 @@
       "src": "/(.*)",
       "dest": "/manage.py"
     }
-  ],
-  "build": {
-    "env": {
-      "PYTHON_VERSION": "3.12"
-    },
-    "commands": {
-      "build": "sh build.sh"
-    }
-  }
+  ]
 }
