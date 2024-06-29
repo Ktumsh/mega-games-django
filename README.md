@@ -8,7 +8,7 @@
   
 # 🕹️ Mega Games Django 👋
   
-Mega Games Store es una página de venta de juegos online creada por y para uso didáctico con el framwork de Django. Puedes crear un usuario, navegar entre las distintas secciones, dar megusta a juegos y agregar al carrito. Página inspirada en Steam y Eneba.
+Mega Games Store es una página de venta de juegos online creada por y para uso didáctico con el framework de Django. Puedes crear un usuario, navegar entre las distintas secciones, dar megusta a juegos y agregar al carrito. Página inspirada en Steam y Eneba.
 </div>
 
 <details>
