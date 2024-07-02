@@ -6,32 +6,36 @@ from . import views
 
 urlpatterns = [
     re_path(r'^accounts/login/$', lambda request: redirect('/login/')),
+    # INDEX
     path('', views.index, name='index'),
+    # USUARIO
     path('login/', views.user_login, name='login'),
     path('signup/', views.user_signup, name='signup'),
     path('logout/', views.user_logout, name='logout'),
     path('api/check-auth/', views.check_auth, name='check_auth'),
+    # CARRITO
+    path('cart/', views.view_cart, name='view_cart'),
     path('api/cart/items/', views.cart_items, name='cart_items'),
     path('api/cart/count/', views.cart_count, name='cart_count'),
     path('api/cart/add/<int:game_id>/', views.add_to_cart, name='add_to_cart'),
     path('api/cart/remove/<int:game_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('api/cart/clear/', views.clear_cart, name='clear_cart'),
     path('api/cart/returnStock/<int:game_id>/', views.return_stock, name='return_stock'),
+    # JUEGOS
     path('api/games/reduceStock/<int:game_id>/', views.reduce_stock, name='reduce_stock'),
     path('api/games/<str:group>/<int:game_id>/', views.game_likes, name='game_likes'),
-    path('cart/', views.view_cart, name='view_cart'),
     path('api/games/', views.games_list, name='games_list'),
     path('api/games/<str:origin>/', views.games_by_origin, name='games_by_origin'),
+    # GENEROS
     path('api/genres/', views.genres, name='genres'),
+    # PAGINAS
     path('about/', views.about, name='about'),
-    path('ActivisionPublisherSale2024/', views.activision, name='ActivisionPublisherSale2024'),
     path('community/', views.community, name='community'),
     path('help/', views.help, name='help'),
-    path('join/', views.join, name='join'),
+    path('ActivisionPublisherSale2024/', views.activision, name='ActivisionPublisherSale2024'),
+    path('ofertas-especiales/', views.ofertas_especiales, name='ofertas_especiales'),
     path('juegos-populares/', views.juegos_populares, name='juegos_populares'),
     path('juegos-y-tarjetas/', views.juegos_y_tarjetas, name='juegos_y_tarjetas'),
-    path('profiles/notifications/', views.notifications, name='notifications'),
-    path('ofertas-especiales/', views.ofertas_especiales, name='ofertas_especiales'),
     path('ofertas-especiales/offer-details', views.offer_details, name='offer_details'),
     path('juegos-populares/games-details', views.games_details, name='games_details'),
     path('juegos-y-tarjetas/gift-details', views.gift_details, name='gift_details'),
@@ -40,6 +44,7 @@ urlpatterns = [
     path('games-details/', views.games_details, name='games_details'),
     path('gift-details/', views.gift_details, name='gift_details'),
     path('publisher-sale-details/', views.publisher_sale_details, name='publisher_sale_details'),
+    path('profiles/notifications/', views.notifications, name='notifications'),
     path('profile/<str:username>/', views.profile, name='profile'),
 ]
 

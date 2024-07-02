@@ -24,19 +24,26 @@ def index(request):
 @csrf_exempt
 def user_login(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        username_or_email = data.get('username')
-        password = data.get('password')
-        if username_or_email and password:
-            user = authenticate(request, username=username_or_email, password=password)
-            if user is not None:
-                login(request, user)
-                return JsonResponse({'status': 'ok'})
+        try:
+            data = json.loads(request.body)
+            username_or_email = data.get('username')
+            password = data.get('password')
+            if username_or_email and password:
+                user = authenticate(request, username=username_or_email, password=password)
+                if user is not None:
+                    user.backend = 'store.backends.UsernameOrEmailBackend'
+                    login(request, user)
+                    return JsonResponse({'status': 'ok'})
+                else:
+                    return JsonResponse({'status': 'error', 'message': 'Credenciales incorrectas, verifica tu usuario o contraseña o crea una cuenta.'}, status=400)
             else:
-                return JsonResponse({'status': 'error', 'message': 'Invalid credentials'}, status=400)
-        else:
-            return JsonResponse({'status': 'error', 'message': 'Missing fields'}, status=400)
-    return render(request, 'store/login.html')
+                return JsonResponse({'status': 'error', 'message': 'Todos los campos son obligatorios.'}, status=400)
+        except json.JSONDecodeError:
+            return JsonResponse({'status': 'error', 'message': 'JSON inválido.'}, status=400)
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': f'Error del servidor: {str(e)}'}, status=500)
+    else:
+        return render(request, 'store/login.html')
 
 @csrf_exempt
 def user_signup(request):
@@ -49,18 +56,19 @@ def user_signup(request):
 
             if username and password and email:
                 if User.objects.filter(username=username).exists():
-                    return JsonResponse({'status': 'error', 'message': 'Username already exists'}, status=400)
+                    return JsonResponse({'status': 'error', 'message': 'Nombre de usuario ya registrado. Prueba con otro.'}, status=409)
                 if User.objects.filter(email=email).exists():
-                    return JsonResponse({'status': 'error', 'message': 'Email already registered'}, status=400)
+                    return JsonResponse({'status': 'error', 'message': 'Correo ya registrado. Prueba con otro.'}, status=409)
                 user = User.objects.create_user(username, email, password)
+                user.backend = 'store.backends.UsernameOrEmailBackend'
                 login(request, user)
                 return JsonResponse({'redirect': '/'})
             else:
-                return JsonResponse({'status': 'error', 'message': 'Missing fields'}, status=400)
+                return JsonResponse({'status': 'error', 'message': 'Todos los campos son obligatorios.'}, status=400)
         except json.JSONDecodeError:
-            return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
+            return JsonResponse({'status': 'error', 'message': 'JSON inválido'}, status=400)
         except Exception as e:
-            return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
     return render(request, 'store/join.html')
 
 def user_logout(request):
@@ -98,8 +106,11 @@ def add_to_cart(request, game_id):
 
 @login_required
 def cart_count(request):
-    count = CartItem.objects.filter(user=request.user).count()
-    return JsonResponse({'totalItems': count})
+    if request.method == 'GET':
+        count = CartItem.objects.filter(user=request.user).count()
+        return JsonResponse({'totalItems': count})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
 
 @login_required
 def reduce_stock(request, game_id):
@@ -124,7 +135,7 @@ def return_stock(request, game_id):
         game.save()
         return JsonResponse({'status': 'success', 'stock': game.stock})
     except Game.DoesNotExist:
-        return JsonResponse({'status': 'error', 'message': 'Game not found'}, status=404)
+        return JsonResponse({'status': 'error', 'message': '_Juego no encontrado.'}, status=404)
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=500)    
     
@@ -257,17 +268,13 @@ def genres(request):
         genres = json.load(file)
     return JsonResponse(genres, safe=False)
 
-# Vistas adicionales
-def about(request):
-    return my_view(request, 'store/about.html')
-
-@login_required
-def activision(request):
-    return my_view(request, 'store/ActivisionPublisherSale2024.html')
-
+#VIEWS ADICIONALES
 @login_required
 def cart(request):
     return my_view(request, 'store/cart.html')
+
+def about(request):
+    return my_view(request, 'store/about.html')
 
 @login_required
 def community(request):
@@ -278,8 +285,12 @@ def help(request):
     return my_view(request, 'store/help.html')
 
 @login_required
-def join(request):
-    return my_view(request, 'store/join.html')
+def activision(request):
+    return my_view(request, 'store/ActivisionPublisherSale2024.html')
+
+@login_required
+def ofertas_especiales(request):
+    return my_view(request, 'store/ofertas-especiales.html')
 
 @login_required
 def juegos_populares(request):
@@ -292,10 +303,6 @@ def juegos_y_tarjetas(request):
 @login_required
 def notifications(request):
     return my_view(request, 'store/notifications.html')
-
-@login_required
-def ofertas_especiales(request):
-    return my_view(request, 'store/ofertas-especiales.html')
 
 @login_required
 def profile(request, username):
@@ -317,7 +324,6 @@ def get_game_details(request, template_name):
 
     game = get_object_or_404(Game, id=item_id, origen__iexact=group, nombre__iexact=game_name)
 
-    # Limpiar datos
     def clean_data(data):
         return json.loads(data) if data else []
 
@@ -353,7 +359,7 @@ def get_game_details(request, template_name):
     }
 
     context = {
-        'game': json.dumps(game_data),  # Serializa el objeto game_data a una cadena JSON
+        'game': json.dumps(game_data),
         'is_authenticated': request.user.is_authenticated,
         'username': request.user.username if request.user.is_authenticated else '',
     }

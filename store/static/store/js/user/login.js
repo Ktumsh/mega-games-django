@@ -10,26 +10,37 @@ document.getElementById("login").addEventListener("submit", async (e) => {
     password: formData.get("password"),
   });
 
-  const res = await fetch("/login/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-CSRFToken": getCookie("csrftoken"),
-    },
-    body: data,
-  });
+  try {
+    const res = await fetch("/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+      body: data,
+    });
 
-  if (!res.ok) {
-    errorMsg.classList.toggle("hidden", false);
-    identifier.classList.add("error");
-    password.classList.add("error");
-    return;
-  }
+    if (!res.ok) {
+      const resJson = await res.json();
+      errorMsg.textContent = resJson.message || "Error desconocido";
+      errorMsg.classList.toggle("hidden", false);
+      identifier.classList.add("error");
+      password.classList.add("error");
+      return;
+    }
 
-  const resJson = await res.json();
-  if (resJson.status === "ok") {
-    window.location.href = "/";
-  } else {
+    const resJson = await res.json();
+    if (resJson.status === "ok") {
+      window.location.href = "/";
+    } else {
+      errorMsg.textContent = resJson.message || "Error desconocido";
+      errorMsg.classList.toggle("hidden", false);
+      identifier.classList.add("error");
+      password.classList.add("error");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    errorMsg.textContent = "Error de conexión";
     errorMsg.classList.toggle("hidden", false);
     identifier.classList.add("error");
     password.classList.add("error");

@@ -1278,15 +1278,12 @@ body {
   mask-composite: source-in;
   transition: background-image 0.1s ease-out;
   animation-name: bg_anim;
-  animation-duration: 1.5s;
+  animation-duration: 0.8s;
   z-index: -1;
 }
 
 @keyframes bg_anim {
   0% {
-    opacity: 0;
-  }
-  30% {
     opacity: 0;
   }
   100% {

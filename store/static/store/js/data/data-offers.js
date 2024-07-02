@@ -432,13 +432,13 @@ function updateVisibleItems() {
   const translateXValue = -(currentSlideIndex * 10);
   sliderTray.style.transform = `translateX(${translateXValue}%) translateX(0px)`;
   updateScrollBar();
+  updateBackground();
 }
 
 function updateBackground() {
   const pageGameBg = document.getElementById("pageGameBg");
   if (cardData.length > 0) {
-    const imageUrl =
-      cardData[currentBackgroundIndex % cardData.length].background;
+    const imageUrl = cardData[currentSlideIndex % cardData.length].background;
     preloadImage(imageUrl)
       .then(() => {
         pageGameBg.style.backgroundImage = `url(${imageUrl})`;
@@ -446,7 +446,6 @@ function updateBackground() {
       .catch((error) => {
         console.error("Error al cargar la imagen de fondo:", error);
       });
-    currentBackgroundIndex = (currentBackgroundIndex + 1) % cardData.length;
   }
 }
 
@@ -493,7 +492,6 @@ function startCarouselAutoChange() {
     intervalId = setInterval(() => {
       currentSlideIndex = (currentSlideIndex + 1) % cardData.length;
       updateVisibleItems();
-      updateBackground();
     }, transitionTime);
   }
 }

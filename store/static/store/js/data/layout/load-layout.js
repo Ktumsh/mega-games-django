@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const currentPath = window.location.pathname;
-  const { isAuthenticated, username } = window.userContext;
+  const username = window.userContext.username;
+  const isAuthenticated = window.userContext.isAuthenticated;
 
   function addHamburgerMenu() {
     const hamburgerMenuSlot = document.querySelector(".HamburgerMenuSlot");
@@ -129,9 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div role="navigation" class="supernav_container" aria-label="Menú global">
             <a class="menuitem supernav" href="/">Tienda</a>
-            <a class="menuitem supernav" href="/community">Comunidad</a>
-            <a class="menuitem supernav" href="/about">Acerca de</a>
-            <a class="menuitem supernav" href="/help">Soporte</a>
+            <a class="menuitem supernav" href="/community/">Comunidad</a>
+            <a class="menuitem supernav" href="/about/">Acerca de</a>
+            <a class="menuitem supernav" href="/help/">Soporte</a>
         </div>
         <div id="global_actions">
             <div id="global_action_menu" role="navigation" aria-label="Menú de la cuenta">
@@ -1009,7 +1010,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const supernavMenu = document.querySelectorAll(".isLogged");
 
     if (isAuthenticated) {
-      const username = localStorage.getItem("username");
       hamburgerSessionLink.style.display = "none";
       userName.textContent = username;
       menuUserArea.style.display = "block";
@@ -1026,13 +1026,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function screenSizeChange(mq) {
     const pathsToRemoveNavbar = [
-      "/login",
-      "/join",
-      "/community",
-      "/about",
-      "/help",
-      "/profiles/notifications",
-      `/profile/${username}`,
+      "/login/",
+      "/signup/",
+      "/community/",
+      "/about/",
+      "/help/",
+      "/profiles/notifications/",
+      `/profile/${username}/`,
     ];
 
     if (pathsToRemoveNavbar.includes(currentPath)) {
@@ -1052,20 +1052,22 @@ document.addEventListener("DOMContentLoaded", () => {
         addMenuEventListeners();
       }
     } else {
-      if (mq.matches) {
-        removeDesktopNavbar();
-        addHamburgerMenu();
-        addMobileNavbar();
-        addPWANavbar();
-        addMenuEventListeners();
-        addMobileNavbarEventListeners();
-        updateCartCount();
-      } else {
-        removeHamburgerMenu();
-        removeMobileNavbar();
-        addDesktopNavbar();
-        addDesktopNavbarEventListeners();
-        updateCartCount();
+      if (isAuthenticated) {
+        if (mq.matches) {
+          removeDesktopNavbar();
+          addHamburgerMenu();
+          addMobileNavbar();
+          addPWANavbar();
+          addMenuEventListeners();
+          addMobileNavbarEventListeners();
+          updateCartCount();
+        } else {
+          removeHamburgerMenu();
+          removeMobileNavbar();
+          addDesktopNavbar();
+          addDesktopNavbarEventListeners();
+          updateCartCount();
+        }
       }
     }
     removeFooter();
@@ -1091,7 +1093,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateCartCount() {
     fetch("/api/cart/count/")
-      .then((response) => response.json())
+      .then(async (response) => {
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          const text = await response.text();
+          throw new Error(`La respuesta del servidor no es JSON: ${text}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         const cartCountElement = document.querySelector(
           "#cart_status_data .cart_link"
@@ -1099,6 +1108,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (cartCountElement) {
           cartCountElement.textContent = `Carro (${data.totalItems})`;
         }
+      })
+      .catch((error) => {
+        console.error("Error al obtener la cantidad del carrito:", error);
       });
   }
 

@@ -254,9 +254,9 @@ function addSearchEvents() {
           `);
 
         games.forEach(function (game) {
-          let precio = game.precioDescuento
-            ? parseFloat(game.precioDescuento)
-            : parseFloat(game.precioOriginal);
+          let precio = game.precio_descuento
+            ? parseFloat(game.precio_descuento)
+            : parseFloat(game.precio_original);
           let precioTexto = !isNaN(precio)
             ? `CLP$ ${precio.toLocaleString("es-CL")}`
             : "No disponible";
