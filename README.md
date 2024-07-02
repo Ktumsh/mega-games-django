@@ -150,7 +150,7 @@ Para que puedas orientarte mejor revisa los comentarios sobre la estructura del 
 ```plaintext
 mega-games-django/
 ├── mega_games_django/ # Configuración del proyecto
-├── store/             # Aplicación y gestión
+├── store/             # Aplicación principal
 │   ├── static/        # Archivos estáticos
 │   │   └── store/
 │   │       ├── api/     # Api de géneros (irrelevante)
@@ -165,17 +165,18 @@ mega-games-django/
 │   │       │   ├── managment/  # Manejo de funciones como galería de imágenes / gestión de likes / notificaciones / buscador
 │   │       │   └── user/       # Manejo de la autenticación de usuario y eventos de este
 │   │       └── manifest.json   # Archivo manifiesto para PWA (irrelevante)
-│   ├── templates/     # Páginas
-│   │   ├── about/     # Acerca de / comunidad / ayuda
-│   │   ├── profile/   # Perfil de usuario / notificaciones
+│   ├── templates/     # Plantillas
+│   │   ├── about/     # Páginas de acerca de / comunidad / ayuda
+│   │   ├── profile/   # Páginas de perfil de usuario / notificaciones
 │   │   ├── store/     # Páginas de la tienda, inicio / ofertas / detalles de productos / carrito / entre otras
-│   │   └── user/      # Inicio de sesión / registro / logout
+│   │   └── user/      # Páginas de inicio de sesión / registro / logout
 │   ├── backends.py    # Backend personalizado sobre la autenticación
 │   ├── models.py      # Modelos de la base de datos
 │   ├── urls.py        # Enrutamiento de urls del proyecto
 │   └── views.py       # Vistas de páginas y gestión de fetchs
 ├── .env.demo          # Variables de entorno (opcional cambiar a .env)
-└── otros archivos irrelevantes
+├── README.md          # Documentación del proyecto
+└── otros archivos
 ```
 
 ## 🤝 Colaboradores:
