@@ -99,6 +99,9 @@
               <a href="/">Tienda</a>
             </li>
             <li>
+              <a href="/juegos">Todos los juegos</a>
+            </li>
+            <li>
               <a href="/juegos-populares">Juegos populares</a>
             </li>
           </ul>
@@ -133,15 +136,15 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
-    <script
-      defer
-      src="{% static 'store/js/data/layout/load-layout.js' %}"
-    ></script>
+    <script defer src="{% static 'store/js/layout/load-layout.js' %}"></script>
     <script defer src="{% static 'store/js/user/user-events.js' %}"></script>
     <script
       defer
-      src="{% static 'store/js/data/data-popular-games.js' %}"
+      src="{% static 'store/js/data/data_store/data-popular-games.js' %}"
     ></script>
-    <script defer src="{% static 'store/js/search.js' %}"></script>
+    <script
+      defer
+      src="{% static 'store/js/managment/search-manager.js' %}"
+    ></script>
   </body>
 </html>

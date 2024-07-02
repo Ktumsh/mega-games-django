@@ -434,15 +434,24 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
+    <script defer src="{% static 'store/js/layout/load-layout.js' %}"></script>
+    <script defer src="{% static 'store/js/user/user-events.js' %}"></script>
     <script
       defer
-      src="{% static 'store/js/data/layout/load-layout.js' %}"
+      src="{% static 'store/js/data/data_store/home-maincap.js' %}"
     ></script>
-    <script defer src="{% static 'store/js/user/user-events.js' %}"></script>
-    <script defer src="{% static 'store/js/data/home-maincap.js' %}"></script>
-    <script defer src="{% static 'store/js/data/data-home.js' %}"></script>
-    <script defer src="{% static 'store/js/carousel.js' %}"></script>
-    <script defer src="{% static 'store/js/search.js' %}"></script>
-    <script defer src="{% static 'store/js/install-app-modal.js' %}"></script>
+    <script
+      defer
+      src="{% static 'store/js/data/data_store/data-home.js' %}"
+    ></script>
+    <script defer src="{% static 'store/js/events/carousel.js' %}"></script>
+    <script
+      defer
+      src="{% static 'store/js/managment/search-manager.js' %}"
+    ></script>
+    <script
+      defer
+      src="{% static 'store/js/events/install-app-modal.js' %}"
+    ></script>
   </body>
 </html>

@@ -710,18 +710,18 @@
     <script
       defer
       type="module"
-      src="{% static 'store/js/data/data-publisher.js' %}"
+      src="{% static 'store/js/data/data_store/data-publisher.js' %}"
     ></script>
-    <script
-      defer
-      src="{% static 'store/js/data/layout/load-layout.js' %}"
-    ></script>
+    <script defer src="{% static 'store/js/layout/load-layout.js' %}"></script>
     <script defer src="{% static 'store/js/user/user-events.js' %}"></script>
     <script
       defer
       type="module"
-      src="{% static 'store/js/publisher-events.js' %}"
+      src="{% static 'store/js/events/publisher-events.js' %}"
     ></script>
-    <script defer src="{% static 'store/js/search.js' %}"></script>
+    <script
+      defer
+      src="{% static 'store/js/managment/search-manager.js' %}"
+    ></script>
   </body>
 </html>

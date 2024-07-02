@@ -15,10 +15,8 @@ async function loadInitialCards() {
   try {
     const response = await fetch("/api/games/");
     const api_store = await response.json();
-    const tarjetas = api_store.filter((game) => game.origen === "gamesCards");
-    const cardsContainer = document.getElementById(
-      "popularGamesCardsContainer"
-    );
+    const tarjetas = api_store.filter((game) => game.origen === "giftCards");
+    const cardsContainer = document.getElementById("gamesAndCardsContainer");
 
     updateCounter(tarjetas.length);
 
@@ -53,10 +51,8 @@ async function loadCardsOnScroll() {
   try {
     const response = await fetch("/api/games/");
     const api_store = await response.json();
-    const tarjetas = api_store.filter((game) => game.origen === "gamesCards");
-    const cardsContainer = document.getElementById(
-      "popularGamesCardsContainer"
-    );
+    const tarjetas = api_store.filter((game) => game.origen === "giftCards");
+    const cardsContainer = document.getElementById("gamesAndCardsContainer");
     const loader = document.getElementById("loader");
 
     const maxCards = getMaxCards();
@@ -105,7 +101,7 @@ function renderCards(cardsForLoad, cardsContainer) {
             </div>
           </div>
           <div class="card_bottom_body">
-            <a class="card_link" href="games-details?game=${pageName}&group=${pageGroup}&item=${
+            <a class="card_link" href="/gift-details?game=${pageName}&group=${pageGroup}&item=${
       tarjeta.id
     }">
               <div class="card_price">

@@ -1282,6 +1282,10 @@ body {
   z-index: -1;
 }
 
+.page_game_bg.v2 {
+  position: fixed;
+}
+
 @keyframes bg_anim {
   0% {
     opacity: 0;

@@ -1,4 +1,4 @@
-import { loadPulisherCards } from "../publisher-events.js";
+import { loadPulisherCards } from "../../events/publisher-events.js";
 
 async function loadPublisherData() {
   try {
@@ -67,7 +67,7 @@ async function loadPublisherData() {
       return `
         <div class="sale_section_card">
           <div class="sale_section_card_ctn">
-            <a href="publisher-sale-details?game=${pageName}&group=${pageGroup}&item=${
+            <a href="/publisher-sale-details?game=${pageName}&group=${pageGroup}&item=${
         tarjeta.id
       }" style="display: block; cursor: pointer">
               <div class="capsule_decorators"></div>
@@ -107,7 +107,7 @@ async function loadPublisherData() {
       return `
         <div class="sale_section_card">
           <div class="sale_section_card_ctn">
-            <a href="publisher-sale-details?game=${pageName}&group=${pageGroup}&item=${
+            <a href="/publisher-sale-details?game=${pageName}&group=${pageGroup}&item=${
         tarjeta.id
       }" style="display: block; cursor: pointer">
               <div class="capsule_decorators"></div>
@@ -147,7 +147,7 @@ async function loadPublisherData() {
       return `
         <div class="sale_section_card">
           <div class="sale_section_card_ctn">
-            <a href="publisher-sale-details?game=${pageName}&group=${pageGroup}&item=${
+            <a href="/publisher-sale-details?game=${pageName}&group=${pageGroup}&item=${
         tarjeta.id
       }" style="display: block; cursor: pointer">
               <div class="capsule_decorators"></div>

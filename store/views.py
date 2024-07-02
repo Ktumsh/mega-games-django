@@ -43,7 +43,7 @@ def user_login(request):
         except Exception as e:
             return JsonResponse({'status': 'error', 'message': f'Error del servidor: {str(e)}'}, status=500)
     else:
-        return render(request, 'store/login.html')
+        return render(request, 'user/login.html')
 
 @csrf_exempt
 def user_signup(request):
@@ -69,11 +69,11 @@ def user_signup(request):
             return JsonResponse({'status': 'error', 'message': 'JSON inválido'}, status=400)
         except Exception as e:
             return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
-    return render(request, 'store/join.html')
+    return render(request, 'user/join.html')
 
 def user_logout(request):
     logout(request)
-    return render(request, 'store/logout.html')
+    return render(request, 'user/logout.html')
 
 def check_auth(request):
     if request.user.is_authenticated:
@@ -263,7 +263,7 @@ def games_by_origin(request, origin):
     return JsonResponse(games_data, safe=False)
 
 def genres(request):
-    file_path = os.path.join(settings.BASE_DIR, 'store', 'static', 'store', 'js', 'data', 'api', 'gen_cards.json')
+    file_path = os.path.join(settings.BASE_DIR, 'store', 'static', 'store', 'api', 'gen_cards.json')
     with open(file_path, 'r', encoding='utf-8') as file:
         genres = json.load(file)
     return JsonResponse(genres, safe=False)
@@ -274,15 +274,19 @@ def cart(request):
     return my_view(request, 'store/cart.html')
 
 def about(request):
-    return my_view(request, 'store/about.html')
+    return my_view(request, 'about/about.html')
 
 @login_required
 def community(request):
-    return my_view(request, 'store/community.html')
+    return my_view(request, 'about/community.html')
 
 @login_required
 def help(request):
-    return my_view(request, 'store/help.html')
+    return my_view(request, 'about/help.html')
+
+@login_required
+def juegos(request):
+    return my_view(request, 'store/juegos.html')
 
 @login_required
 def activision(request):
@@ -302,7 +306,7 @@ def juegos_y_tarjetas(request):
 
 @login_required
 def notifications(request):
-    return my_view(request, 'store/notifications.html')
+    return my_view(request, 'profile/notifications.html')
 
 @login_required
 def profile(request, username):
@@ -310,7 +314,7 @@ def profile(request, username):
         'is_authenticated': request.user.is_authenticated,
         'username': request.user.username if request.user.is_authenticated else ''
     }
-    return render(request, 'store/profile.html', context)
+    return render(request, 'profile/profile.html', context)
 
 def get_game_details(request, template_name):
     import urllib.parse
@@ -364,7 +368,6 @@ def get_game_details(request, template_name):
         'username': request.user.username if request.user.is_authenticated else '',
     }
     return render(request, template_name, context)
-
 
 @login_required
 def games_details(request):

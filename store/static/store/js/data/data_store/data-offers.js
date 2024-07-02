@@ -173,7 +173,7 @@ function renderDesktopCarouselItems() {
             <div class="ImpressionTrackedElement">
               <div class="capsule">
                 <div class="capsule_ctn">
-                  <a href="offer-details?game=${pageName}&group=${pageGroup}&item=${
+                  <a href="/offer-details?game=${pageName}&group=${pageGroup}&item=${
       card.id
     }"
                     class="capsule_img_ctn">
@@ -211,7 +211,7 @@ function renderDesktopCarouselItems() {
                   <div class="capsule_body_ctn">
                     <div class="capsule_top">
                       <div class="capsule_top_ctn">
-                        <a href="offer-details?game=${pageName}&group=${pageGroup}&item=${
+                        <a href="/offer-details?game=${pageName}&group=${pageGroup}&item=${
       card.id
     }"
                           class="capsule_title">
@@ -331,7 +331,7 @@ function renderMobileCarouselItems() {
   <div>
     <div class="capsule">
       <div class="capsule_ctn">
-        <a href="offer-details?game=${pageName}&group=${pageGroup}&item=${
+        <a href="/offer-details?game=${pageName}&group=${pageGroup}&item=${
       card.id
     }"
           class="capsule_img_ctn">
@@ -345,7 +345,7 @@ function renderMobileCarouselItems() {
         <div class="capsule_body_ctn">
           <div class="capsule_top">
             <div class="capsule_top_ctn">
-              <a href="offer-details?game=${pageName}&group=${pageGroup}&item=${
+              <a href="/offer-details?game=${pageName}&group=${pageGroup}&item=${
       card.id
     }"
                 class="capsule_title">
@@ -593,14 +593,13 @@ async function loadCardsOnScroll() {
 
   try {
     const response = await fetch("/api/games/");
-    const games = await response.json();
+    const apiStore = await response.json();
+    const games = apiStore.filter((game) => game.origen === "offerCards");
     const cardsContainer = document.getElementById("gameOfferCardsContainer");
     const loader = document.getElementById("loader");
 
     const maxCards = getMaxCards();
-    const cardsForLoad = games
-      .filter((game) => game.origen === "offerCards")
-      .slice(lastCard, lastCard + maxCards);
+    const cardsForLoad = games.slice(lastCard, lastCard + maxCards);
 
     renderCards(cardsForLoad, cardsContainer);
 
@@ -646,7 +645,7 @@ function renderCards(cardsForLoad, cardsContainer) {
             </div>
           </div>
           <div class="card_bottom_body">
-            <a class="card_link" href="offer-details?game=${pageName}&group=${pageGroup}&item=${
+            <a class="card_link" href="/offer-details?game=${pageName}&group=${pageGroup}&item=${
       game.id
     }">
               <div class="fs-sm d-flex flex-row flex-lg-column gap-sm-2">
