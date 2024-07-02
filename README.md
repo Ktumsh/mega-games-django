@@ -19,7 +19,7 @@ Mega Games Store es una página de venta de juegos online creada por y para uso 
 - [📋 Requisitos previos](#-requisitos-previos)
   - [Instalación de Python](#instalación-de-python)
 - [⚙ Configuración del proyecto](#-configuración-del-proyecto)
-- [➕ Adicionales](#-adicionales)
+- [➕ Adicionales](#-adicionales-opcionales)
   - [Acceder a la ventana de administrador](#acceder-a-la-ventana-de-administrador)
   - [Configuración de variables de entorno](#configuración-de-variables-de-entorno)
 - [📁 Estructura del Proyecto](#-estructura-del-proyecto)
@@ -118,7 +118,7 @@ python manage.py runserver
 
 Abre un navegador web y navega a `http://127.0.0.1:8000/` para ver la aplicación en funcionamiento.
 
-## ➕ Adicionales
+## ➕ Adicionales (opcionales)
 
 ### Acceder a la ventana de administrador
 
