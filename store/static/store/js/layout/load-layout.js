@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <a class="submenuitem" href="/"> Página principal </a>
               <a class="submenuitem" href="/ofertas-especiales"> Ofertas especiales </a>
               <a class="submenuitem" href="/ActivisionPublisherSale2024"> Eventos de rebajas </a>
-              <a class="submenuitem" href="/juegos"> Todos los juegos </a>
+              <a class="submenuitem" href="/tienda"> Todos los juegos </a>
               <a class="submenuitem" href="/juegos-populares"> Juegos populares </a>
               <a class="submenuitem" href="/juegos-y-tarjetas"> Juegos y tarjetas </a>
               <a class="submenuitem" href="javascript:void(0)"> Géneros </a>
@@ -397,7 +397,7 @@ document.addEventListener("DOMContentLoaded", () => {
                           <div class="popup_menu_subheader responsive_hidden">Miscelánea</div>
                           <a href="#" class="popup_menu_item">Todas las ofertas</a>
                           <div class="category_hr responsive_hidden"></div>
-                          <a href="/juegos" class="popup_menu_item">Juegos</a>
+                          <a href="/tienda" class="popup_menu_item">Juegos</a>
                           <a href="/juegos-y-tarjetas" class="popup_menu_item">Juegos y tarjetas</a>
                           <a href="#" class="popup_menu_item">eTarjetas</a>
                           <div class="category_hr responsive_hidden"></div>
@@ -536,7 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       <div class="popup_menu_subheader responsive_hidden">Miscelánea</div>
                       <a href="#" class="popup_menu_item">Todas las ofertas</a>
                       <div class="category_hr responsive_hidden"></div>
-                      <a href="/juegos" class="popup_menu_item">Juegos</a>
+                      <a href="/tienda" class="popup_menu_item">Juegos</a>
                       <a href="/juegos-y-tarjetas" class="popup_menu_item">Juegos y tarjetas</a>
                       <a href="#" class="popup_menu_item">eTarjetas</a>
                       <div class="category_hr responsive_hidden"></div>

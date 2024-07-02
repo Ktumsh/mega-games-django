@@ -285,8 +285,8 @@ def help(request):
     return my_view(request, 'about/help.html')
 
 @login_required
-def juegos(request):
-    return my_view(request, 'store/juegos.html')
+def tienda(request):
+    return my_view(request, 'store/tienda.html')
 
 @login_required
 def activision(request):

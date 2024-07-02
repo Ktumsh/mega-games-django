@@ -33,7 +33,7 @@ urlpatterns = [
     path('community/', views.community, name='community'),
     path('help/', views.help, name='help'),
     # STORE
-    path('juegos/', views.juegos, name='juegos'),
+    path('tienda/', views.tienda, name='tienda'),
     path('ActivisionPublisherSale2024/', views.activision, name='ActivisionPublisherSale2024'),
     path('ofertas-especiales/', views.ofertas_especiales, name='ofertas_especiales'),
     path('juegos-populares/', views.juegos_populares, name='juegos_populares'),
