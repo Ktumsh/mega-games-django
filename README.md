@@ -19,9 +19,8 @@ Mega Games Store es una página de venta de juegos online creada por y para uso 
 - [📋 Requisitos previos](#-requisitos-previos)
   - [Instalación de Python](#instalación-de-python)
 - [⚙ Configuración del proyecto](#-configuración-del-proyecto)
-- [➕ Adicionales](#-adicionales-opcionales)
+- [➕ Opcionales](#-opcionales)
   - [Acceder a la ventana de administrador](#acceder-a-la-ventana-de-administrador)
-  - [Configuración de variables de entorno](#configuración-de-variables-de-entorno)
 - [📁 Estructura del Proyecto](#-estructura-del-proyecto)
 - [🤝 Colaboradores](#-colaboradores)
 
@@ -86,6 +85,8 @@ En Windows:
 
 ```bash
 python -m venv venv
+```
+```bash
 venv\Scripts\activate
 ```
 
@@ -110,23 +111,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-### 6. Ejecutar el servidor de desarrollo 🚀
-```bash
-python manage.py runserver
-```
-
-### 7. Abrir la aplicación en el navegador 🌍
-
-Abre un navegador web y navega a `http://127.0.0.1:8000/` para ver la aplicación en funcionamiento.
-
-## ➕ Adicionales (opcionales)
-
-### Acceder a la ventana de administrador
-
-1. Abre un navegador web y navega a `http://127.0.0.1:8000/admin`.
-2. Inicia sesión con las credenciales del superusuario que creaste anteriormente.
-
-### Configuración de variables de entorno
+### 6. Configuración de variables de entorno
 
 1. Copia el archivo `.env.demo` y renómbralo a `.env`:
 ```bash
@@ -142,6 +127,23 @@ ALLOWED_HOSTS=127.0.0.1
 ```bash
 from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())
 ```
+
+### 7. Ejecutar el servidor de desarrollo 🚀
+```bash
+python manage.py runserver
+```
+
+### 8. Abrir la aplicación en el navegador 🌍
+
+Abre un navegador web y navega a `http://127.0.0.1:8000/` para ver la aplicación en funcionamiento.
+
+## ➕ Opcionales
+
+### Acceder a la ventana de administrador
+
+1. Abre un navegador web y navega a `http://127.0.0.1:8000/admin`.
+2. Inicia sesión con las credenciales del superusuario que creaste anteriormente.
+
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 ## 📁 Estructura del Proyecto
