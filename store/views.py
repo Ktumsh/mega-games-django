@@ -9,11 +9,13 @@ from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from django.conf import settings
 from .models import Game, CartItem
+from .forms import ProfileUpdateForm
 
 def my_view(request, template_name):
     context = {
         'is_authenticated': request.user.is_authenticated,
-        'username': request.user.username if request.user.is_authenticated else ''
+        'username': request.user.username if request.user.is_authenticated else '',
+        'profile_image_url': request.user.profile.image.url if request.user.is_authenticated else ''
     }
     return render(request, template_name, context)
 
@@ -310,10 +312,21 @@ def notifications(request):
 
 @login_required
 def profile(request, username):
+    if request.method == 'POST':
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        if p_form.is_valid():
+            p_form.save()
+            return redirect('profile', username=username)
+    else:
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
     context = {
         'is_authenticated': request.user.is_authenticated,
-        'username': request.user.username if request.user.is_authenticated else ''
+        'username': request.user.username if request.user.is_authenticated else '',
+        'p_form': p_form,
+        'profile_image_url': request.user.profile.image.url if request.user.is_authenticated else ''
     }
+
     return render(request, 'profile/profile.html', context)
 
 def get_game_details(request, template_name):
@@ -366,8 +379,10 @@ def get_game_details(request, template_name):
         'game': json.dumps(game_data),
         'is_authenticated': request.user.is_authenticated,
         'username': request.user.username if request.user.is_authenticated else '',
+        'profile_image_url': request.user.profile.image.url if request.user.is_authenticated else ''
     }
     return render(request, template_name, context)
+
 
 @login_required
 def games_details(request):

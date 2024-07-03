@@ -66,10 +66,11 @@
       crossorigin
     />
     <script>
-        window.userContext = {
-          isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
-          username: "{{ username }}",
-      }
+      window.userContext = {
+        isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
+        username: "{{ username }}",
+        profileImageUrl: "{{ profile_image_url }}"
+      };
     </script>
     <style>
       body {
@@ -113,7 +114,7 @@
               <div class="profile_header_content">
                 <div class="profile_header_centered_persona">
                   <div class="persona_name" style="font-size: 24px">
-                    <span class="actual_persona_name">Username</span>
+                    <span class="actual_persona_name">{{ username }}</span>
                   </div>
                   <div class="header_real_name ellipsis">
                     <img
@@ -123,23 +124,32 @@
                     &nbsp; Santiago, Region Metropolitana, Chile
                   </div>
                 </div>
-
                 <div
                   class="playerAvatar profile_header_size online"
-                  data-miniprofile="278213816"
+                  title="Editar imagen de perfil"
                 >
-                  <div class="playerAvatarAutoSizeInner">
-                    <div class="profile_avatar_frame">
-                      <img
-                        src="{% static 'store/images/profile/user-mark.png' %}"
+                  <div class="edit_profile">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h6.525q.5 0 .75.313t.25.687t-.262.688T11.5 5H5v14h14v-6.525q0-.5.313-.75t.687-.25t.688.25t.312.75V19q0 .825-.587 1.413T19 21zm4-7v-2.425q0-.4.15-.763t.425-.637l8.6-8.6q.3-.3.675-.45t.75-.15q.4 0 .763.15t.662.45L22.425 3q.275.3.425.663T23 4.4t-.137.738t-.438.662l-8.6 8.6q-.275.275-.637.438t-.763.162H10q-.425 0-.712-.288T9 14m12.025-9.6l-1.4-1.4zM11 13h1.4l5.8-5.8l-.7-.7l-.725-.7L11 11.575zm6.5-6.5l-.725-.7zl.7.7z"
                       />
-                    </div>
+                    </svg>
+                  </div>
+                  <div class="playerAvatarAutoSizeInner">
                     <img
-                      src="{% static 'store/images/profile/user-avatar-animated.gif' %}"
+                      id="profile_avatar"
+                      src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'store/images/profile/user-avatar-animated.gif' %}{% endif %}"
+                      onclick="document.getElementById('id_image').click()"
+                      style="cursor: pointer"
                     />
                   </div>
                 </div>
-
                 <div class="profile_header_badgeinfo">
                   <div class="profile_header_badgeinfo_badge_area">
                     <div class="profile_header_badge">
@@ -173,6 +183,25 @@
             </div>
           </div>
         </div>
+        <div id="profile_update_form" style="display: none">
+          <form
+            id="profile_image_form"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="id_image">Actualiza tu imagen de perfil</label>
+              {{ p_form.image }}
+              <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+          </form>
+        </div>
+        <script>
+          document.getElementById("id_image").onchange = function () {
+            document.getElementById("profile_image_form").submit();
+          };
+        </script>
         <div class="profile_content has_profile_background">
           <div class="profile_rightcol"></div>
           <div class="profile_leftcol">
@@ -217,12 +246,11 @@
     <!-- FOOTER -->
     <div class="FooterSlot"></div>
     <script>
-      const username = localStorage.getItem("username");
+      const username = window.userContext.username;
       document.title = `Comunidad de Mega Games :: ${username}`;
 
       document.querySelector(".actual_persona_name").textContent = username;
     </script>
-
     <script
       src="https://kit.fontawesome.com/c1a667f1b4.js"
       crossorigin="anonymous"

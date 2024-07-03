@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Game, CartItem
+from .models import Game, CartItem, Profile
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
@@ -12,3 +12,7 @@ class GameAdmin(admin.ModelAdmin):
 class CartItemAdmin(admin.ModelAdmin):
     list_display = ('user', 'game', 'quantity', 'added_at')
     search_fields = ('user__username', 'game__nombre')
+    
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'image')

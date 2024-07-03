@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentPath = window.location.pathname;
   const username = window.userContext.username;
   const isAuthenticated = window.userContext.isAuthenticated;
+  const profileImageUrl = window.userContext.profileImageUrl;
 
   function addHamburgerMenu() {
     const hamburgerMenuSlot = document.querySelector(".HamburgerMenuSlot");
@@ -171,13 +172,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div id="language_dropdown" class="popup_block_new" style="display: none;"></div>
             </div>
             <a id="user_img" class="user_avatar playerAvatar online" aria-label="Ver tu perfil" href="#">
-              <img src="/static/store/images/profile/user-avatar.jpg" alt="" loading="lazy">
+              <img id="profile_img_src" src="" alt="" loading="lazy">
             </a>
         </div>
     </nav>
 `;
 
     headerSlot.appendChild(headerContainer);
+
+    document.getElementById("profile_img_src").src = profileImageUrl;
 
     const navItems = document.querySelectorAll(".supernav");
     let isActive = false;

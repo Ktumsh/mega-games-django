@@ -77,7 +77,8 @@
       window.userContext = {
         productDetails: {{ game|safe }},
         isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
-        username: "{{ username }}"
+        username: "{{ username|escapejs }}",
+        profileImageUrl: "{{ profile_image_url|escapejs }}"
       };
     </script>
     <style>

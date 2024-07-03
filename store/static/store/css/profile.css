@@ -113,10 +113,12 @@ div.profile_page {
 
 .playerAvatar.profile_header_size .playerAvatarAutoSizeInner {
   position: absolute;
-  top: 2px;
-  right: 2px;
-  bottom: 2px;
-  left: 2px;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  border-radius: 9999px;
+  overflow: hidden;
 }
 
 .playerAvatar .profile_avatar_frame {
@@ -131,8 +133,9 @@ div.profile_page {
   width: 32px;
   height: 32px;
   padding: 1px;
-  border-radius: 0;
+  border-radius: 9999px;
   border: none;
+  object-fit: cover;
 }
 
 .playerAvatar .profile_avatar_frame > img {
@@ -149,6 +152,7 @@ div.profile_page {
   padding: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .playerAvatar.profile_header_size
@@ -476,4 +480,28 @@ input.btn_medium {
   .profile_header_badgeinfo_badge_area {
     display: none;
   }
+}
+
+.edit_profile {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 6px;
+  padding: 6px;
+  color: white;
+  z-index: 10;
+  background-color: rgba(19, 16, 25, 0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+  & svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+.playerAvatar.profile_header_size:hover .edit_profile {
+  opacity: 1;
 }

@@ -5321,15 +5321,16 @@ a.pulldown_mobile {
   background-color: #57cbde;
   background: -webkit-linear-gradient(
     top,
-    rgba(83, 164, 196, 1) 5%,
-    rgba(69, 128, 151, 1) 95%
+    rgba(190, 157, 251, 1) 5%,
+    rgba(88, 9, 236, 1) 95%
   );
   background: linear-gradient(
     to bottom,
-    rgba(83, 164, 196, 1) 5%,
-    rgba(69, 128, 151, 1) 95%
+    rgba(190, 157, 251, 1) 5%,
+    rgba(88, 9, 236, 1) 95%
   );
   filter: none;
+  border-radius: 9999px;
 }
 
 #user_name {
@@ -5378,8 +5379,9 @@ div#global_actions .user_avatar {
   width: 32px;
   height: 32px;
   padding: 1px;
-  border-radius: 0;
+  border-radius: 9999px;
   border: none;
+  object-fit: cover;
   box-sizing: content-box;
 }
 
