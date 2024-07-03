@@ -145,6 +145,11 @@ from django.core.management.utils import get_random_secret_key; print(get_random
 
 ## 📁 Estructura del Proyecto
 
+1. El uso de pillow, objects.all y raw pueden verse reflejados en views.py
+2. Uso y manejo de ORMS se definen en models.py y se interactúan en views.py
+3. Para la creación de formularios se utilizan tanto javascript como django.
+4. Revisar en detalles views.py
+   
 Para que puedas orientarte mejor revisa los comentarios sobre la estructura del proyecto:
 
 ```plaintext
@@ -171,6 +176,7 @@ mega-games-django/
 │   │   ├── store/     # Páginas de la tienda, inicio / ofertas / detalles de productos / carrito / entre otras
 │   │   └── user/      # Páginas de inicio de sesión / registro / logout
 │   ├── backends.py    # Backend personalizado sobre la autenticación
+│   ├── forms.py       # Formulario para imágenes pillow (imagen de perfil)
 │   ├── models.py      # Modelos de la base de datos
 │   ├── urls.py        # Enrutamiento de urls del proyecto
 │   └── views.py       # Vistas de páginas y gestión de fetchs
@@ -180,10 +186,5 @@ mega-games-django/
 ```
 
 ## 🤝 Colaboradores:
-<details>
-  <summary>:zap: Josué Barra</summary>
-</details>
-
-<details>
-  <summary>:zap: Renato Rivera</summary>
-</details>
+<summary>:zap: Josué Barra</summary>
+<summary>:zap: Renato Rivera</summary>
