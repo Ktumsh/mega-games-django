@@ -157,6 +157,7 @@ Para que puedas orientarte mejor revisa los comentarios sobre la estructura del 
 
 ```plaintext
 mega-games-django/
+├── media/ # Para guardar las imágenes pillow, de las imágenes de perfil
 ├── mega_games_django/ # Configuración del proyecto
 ├── store/             # Aplicación principal
 │   ├── static/        # Archivos estáticos
