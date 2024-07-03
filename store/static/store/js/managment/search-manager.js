@@ -1,39 +1,9 @@
-function addStoreNavSearchEvents() {
-  const $storeNavSearchTerms = $(".store_nav_search_term");
-
-  $storeNavSearchTerms.each(function () {
-    const $input = $(this);
-
-    $input.on("focus", function (event) {
-      event.stopPropagation();
-      $input.removeClass("default");
-      $input.attr("placeholder", "");
-    });
-
-    $(document).on("click", function (event) {
-      if (!$input.is(event.target) && $input.has(event.target).length === 0) {
-        if ($input.val() === "") {
-          $input.addClass("default");
-          $input.attr("placeholder", "buscar");
-        } else {
-          $input.removeClass("default");
-          $input.attr("placeholder", "");
-        }
-      }
-    });
-  });
-}
-
 function addSearchEvents() {
-  $(document).ready(async function () {
+  $(document).ready(function () {
     const $searchInput = $("#searchInput");
     const $searchLink = $("#store_search_link");
     const $resultsContainer = $("#searchterm_options");
     let selectedIndex = -1;
-
-    let allGames = [];
-
-    await loadAllGames();
 
     $searchInput.on("input", handleSearch);
 
@@ -95,18 +65,6 @@ function addSearchEvents() {
 
     let searchTimeout;
 
-    async function loadAllGames() {
-      const $resultsContainer = $("#search_suggestion_contents");
-      try {
-        const response = await fetch("/api/games/");
-        const data = await response.json();
-        allGames = data;
-        $resultsContainer.empty();
-      } catch (error) {
-        console.error("Error al cargar los juegos:", error);
-      }
-    }
-
     function normalizeString(str) {
       return str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
     }
@@ -135,7 +93,7 @@ function addSearchEvents() {
 
     function handleSearch(event) {
       clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(function () {
+      searchTimeout = setTimeout(async function () {
         const searchTerm = normalizeString(event.target.value);
         const $resultsContainer = $("#searchterm_options");
         const $suggestionsContainer = $("#search_suggestion_contents");
@@ -148,31 +106,31 @@ function addSearchEvents() {
           return;
         }
 
-        const filteredGames = allGames.filter(function (game) {
-          return (
-            game.nombre &&
-            normalizeString(convertRomanNumerals(game.nombre)).includes(
-              searchTerm
-            )
+        try {
+          const response = await fetch(
+            `/api/search/?query=${encodeURIComponent(searchTerm)}`
           );
-        });
+          const filteredGames = await response.json();
 
-        const totalGamesFound = filteredGames.length;
+          const totalGamesFound = filteredGames.length;
 
-        filteredGames.sort(function (a, b) {
-          const indexA = normalizeString(
-            convertRomanNumerals(a.nombre)
-          ).indexOf(searchTerm);
-          const indexB = normalizeString(
-            convertRomanNumerals(b.nombre)
-          ).indexOf(searchTerm);
-          return indexA - indexB;
-        });
+          filteredGames.sort(function (a, b) {
+            const indexA = normalizeString(
+              convertRomanNumerals(a.nombre)
+            ).indexOf(searchTerm);
+            const indexB = normalizeString(
+              convertRomanNumerals(b.nombre)
+            ).indexOf(searchTerm);
+            return indexA - indexB;
+          });
 
-        const displayedGames = filteredGames.slice(0, 5);
+          const displayedGames = filteredGames.slice(0, 5);
 
-        displayResults(displayedGames, totalGamesFound);
-        updateSearchLinkHref(displayedGames);
+          displayResults(displayedGames, totalGamesFound);
+          updateSearchLinkHref(displayedGames);
+        } catch (error) {
+          console.error("Error al realizar la búsqueda:", error);
+        }
       }, 300);
     }
 

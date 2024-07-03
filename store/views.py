@@ -6,11 +6,13 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods
+from django.db import connection
 from django.http import JsonResponse
 from django.conf import settings
 from .models import Game, CartItem
 from .forms import ProfileUpdateForm
 
+# VISTA PERSONALIZADA
 def my_view(request, template_name):
     context = {
         'is_authenticated': request.user.is_authenticated,
@@ -19,10 +21,12 @@ def my_view(request, template_name):
     }
     return render(request, template_name, context)
 
+# INDEX
 @login_required
 def index(request):
     return my_view(request, 'store/index.html')
 
+# AUTENTICACIÓN
 @csrf_exempt
 def user_login(request):
     if request.method == 'POST':
@@ -84,6 +88,7 @@ def check_auth(request):
         return JsonResponse({'isAuthenticated': False})
     
 
+# CARRITO
 @login_required
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
@@ -185,6 +190,7 @@ def cart_items(request):
     ]
     return JsonResponse(items, safe=False)
 
+# LIKES
 @login_required
 @require_http_methods(["GET", "POST"])
 def game_likes(request, group, game_id):
@@ -203,6 +209,7 @@ def game_likes(request, group, game_id):
         game.save()
         return JsonResponse({'likes': game.likes})
 
+# OBTENCIÓN DE DATOS
 def games_list(request):
     games = Game.objects.all()
     games_data = []
@@ -264,6 +271,37 @@ def games_by_origin(request, origin):
 
     return JsonResponse(games_data, safe=False)
 
+# USO DE ROW
+def search_games(request):
+    search_term = request.GET.get('query', '')
+    search_term_normalized = ''.join(e for e in search_term if e.isalnum()).lower()
+
+    query = """
+    SELECT id, nombre, imagen, imagen_alternativa, precio_original, precio_descuento, origen
+    FROM store_game
+    WHERE LOWER(REPLACE(nombre, ' ', '')) LIKE %s
+    """
+    search_term_with_wildcards = f"%{search_term_normalized}%"
+    
+    with connection.cursor() as cursor:
+        cursor.execute(query, [search_term_with_wildcards])
+        games = cursor.fetchall()
+
+    games_data = []
+    for game in games:
+        games_data.append({
+            'id': game[0],
+            'nombre': game[1],
+            'imagen': game[2],
+            'imagen_alternativa': game[3],
+            'precio_original': str(game[4]) if game[4] else None,
+            'precio_descuento': str(game[5]) if game[5] else None,
+            'origen': game[6],
+        })
+
+    return JsonResponse(games_data, safe=False)
+
+# GÉNEROS
 def genres(request):
     file_path = os.path.join(settings.BASE_DIR, 'store', 'static', 'store', 'api', 'gen_cards.json')
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -310,6 +348,7 @@ def juegos_y_tarjetas(request):
 def notifications(request):
     return my_view(request, 'profile/notifications.html')
 
+# USO DE PILOW
 @login_required
 def profile(request, username):
     if request.method == 'POST':
@@ -329,6 +368,7 @@ def profile(request, username):
 
     return render(request, 'profile/profile.html', context)
 
+# OBTENCIÓN DE DETALLES DE JUEGOS
 def get_game_details(request, template_name):
     import urllib.parse
 

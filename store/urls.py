@@ -22,6 +22,7 @@ urlpatterns = [
     path('api/cart/clear/', views.clear_cart, name='clear_cart'),
     path('api/cart/returnStock/<int:game_id>/', views.return_stock, name='return_stock'),
     # GESTION DE JUEGOS
+    path('api/search/', views.search_games, name='search_games'),
     path('api/games/reduceStock/<int:game_id>/', views.reduce_stock, name='reduce_stock'),
     path('api/games/<str:group>/<int:game_id>/', views.game_likes, name='game_likes'),
     path('api/games/', views.games_list, name='games_list'),
