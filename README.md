@@ -19,9 +19,10 @@ Mega Games Store es una página de venta de juegos online creada por y para uso 
 - [📋 Requisitos previos](#-requisitos-previos)
   - [Instalación de Python](#instalación-de-python)
 - [⚙ Configuración del proyecto](#-configuración-del-proyecto)
-- [➕ Adicionales](#-adicionales)
+- [➕ Adicionales](#-adicionales-opcionales)
   - [Acceder a la ventana de administrador](#acceder-a-la-ventana-de-administrador)
   - [Configuración de variables de entorno](#configuración-de-variables-de-entorno)
+- [📁 Estructura del Proyecto](#-estructura-del-proyecto)
 - [🤝 Colaboradores](#-colaboradores)
 
 </details>
@@ -72,6 +73,9 @@ brew install python
 2. Clona el repositorio:
 ```bash
 git clone https://github.com/ktumsh/mega-games-django.git
+```
+3. Navega a la carpeta del proyecto:
+```bash
 cd mega-games-django
 ```
 
@@ -114,7 +118,7 @@ python manage.py runserver
 
 Abre un navegador web y navega a `http://127.0.0.1:8000/` para ver la aplicación en funcionamiento.
 
-## ➕ Adicionales
+## ➕ Adicionales (opcionales)
 
 ### Acceder a la ventana de administrador
 
@@ -138,6 +142,42 @@ ALLOWED_HOSTS=127.0.0.1
 from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())
 ```
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+
+## 📁 Estructura del Proyecto
+
+Para que puedas orientarte mejor revisa los comentarios sobre la estructura del proyecto:
+
+```plaintext
+mega-games-django/
+├── mega_games_django/ # Configuración del proyecto
+├── store/             # Aplicación principal
+│   ├── static/        # Archivos estáticos
+│   │   └── store/
+│   │       ├── api/     # Api de géneros (irrelevante)
+│   │       ├── css/
+│   │       ├── fonts/
+│   │       ├── images/
+│   │       ├── js/
+│   │       │   ├── compra/     # Gestión carrito
+│   │       │   ├── data/       # Carga de contenido / cards / productos / detalles de productos
+│   │       │   ├── events/     # Eventos generales como gestión de carruseles / modales / entre otros
+│   │       │   ├── layout/     # Carga dinámica del layout (contenido base de las páginas)
+│   │       │   ├── managment/  # Manejo de funciones como galería de imágenes / gestión de likes / notificaciones / buscador
+│   │       │   └── user/       # Manejo de la autenticación de usuario y eventos de este
+│   │       └── manifest.json   # Archivo manifiesto para PWA (irrelevante)
+│   ├── templates/     # Plantillas
+│   │   ├── about/     # Páginas de acerca de / comunidad / ayuda
+│   │   ├── profile/   # Páginas de perfil de usuario / notificaciones
+│   │   ├── store/     # Páginas de la tienda, inicio / ofertas / detalles de productos / carrito / entre otras
+│   │   └── user/      # Páginas de inicio de sesión / registro / logout
+│   ├── backends.py    # Backend personalizado sobre la autenticación
+│   ├── models.py      # Modelos de la base de datos
+│   ├── urls.py        # Enrutamiento de urls del proyecto
+│   └── views.py       # Vistas de páginas y gestión de fetchs
+├── .env.demo          # Variables de entorno (opcional cambiar a .env)
+├── README.md          # Documentación del proyecto
+└── otros archivos
+```
 
 ## 🤝 Colaboradores:
 <details>
