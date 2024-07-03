@@ -30,6 +30,7 @@ Mega Games Store es una página de venta de juegos online creada por y para uso 
 ## ✨ Características principales
 
 - **Creación de usuario**: Puedes crear un usuario al ingresar a la página.
+- **Editar perfil**: Puedes editar la imagen de perfil accediendo en el encabezado de la página, clickeando sobre la imagen de perfil.
 - **Sección principal**: Muestra la sección principal con accesos directos a secciones recomendadas.
 - **Ofertas especiales**: Sección de ofertas especiales para mostrar juegos en oferta.
 - **Ofertas del editor**: Sección para mostrar ofertas del editor de Activision.
