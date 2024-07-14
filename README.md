@@ -19,9 +19,8 @@ Mega Games Store es una página de venta de juegos online creada por y para uso 
 - [📋 Requisitos previos](#-requisitos-previos)
   - [Instalación de Python](#instalación-de-python)
 - [⚙ Configuración del proyecto](#-configuración-del-proyecto)
-- [➕ Adicionales](#-adicionales-opcionales)
+- [➕ Opcionales](#-opcionales)
   - [Acceder a la ventana de administrador](#acceder-a-la-ventana-de-administrador)
-  - [Configuración de variables de entorno](#configuración-de-variables-de-entorno)
 - [📁 Estructura del Proyecto](#-estructura-del-proyecto)
 - [🤝 Colaboradores](#-colaboradores)
 
@@ -30,6 +29,7 @@ Mega Games Store es una página de venta de juegos online creada por y para uso 
 ## ✨ Características principales
 
 - **Creación de usuario**: Puedes crear un usuario al ingresar a la página.
+- **Editar perfil**: Puedes editar la imagen de perfil accediendo en el encabezado de la página, clickeando sobre la imagen de perfil.
 - **Sección principal**: Muestra la sección principal con accesos directos a secciones recomendadas.
 - **Ofertas especiales**: Sección de ofertas especiales para mostrar juegos en oferta.
 - **Ofertas del editor**: Sección para mostrar ofertas del editor de Activision.
@@ -85,6 +85,8 @@ En Windows:
 
 ```bash
 python -m venv venv
+```
+```bash
 venv\Scripts\activate
 ```
 
@@ -109,23 +111,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-### 6. Ejecutar el servidor de desarrollo 🚀
-```bash
-python manage.py runserver
-```
-
-### 7. Abrir la aplicación en el navegador 🌍
-
-Abre un navegador web y navega a `http://127.0.0.1:8000/` para ver la aplicación en funcionamiento.
-
-## ➕ Adicionales (opcionales)
-
-### Acceder a la ventana de administrador
-
-1. Abre un navegador web y navega a `http://127.0.0.1:8000/admin`.
-2. Inicia sesión con las credenciales del superusuario que creaste anteriormente.
-
-### Configuración de variables de entorno
+### 6. Configuración de variables de entorno
 
 1. Copia el archivo `.env.demo` y renómbralo a `.env`:
 ```bash
@@ -141,14 +127,37 @@ ALLOWED_HOSTS=127.0.0.1
 ```bash
 from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())
 ```
+
+### 7. Ejecutar el servidor de desarrollo 🚀
+```bash
+python manage.py runserver
+```
+
+### 8. Abrir la aplicación en el navegador 🌍
+
+Abre un navegador web y navega a `http://127.0.0.1:8000/` para ver la aplicación en funcionamiento.
+
+## ➕ Opcionales
+
+### Acceder a la ventana de administrador
+
+1. Abre un navegador web y navega a `http://127.0.0.1:8000/admin`.
+2. Inicia sesión con las credenciales del superusuario que creaste anteriormente.
+
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 ## 📁 Estructura del Proyecto
 
+1. El uso de pillow, objects.all y raw pueden verse reflejados en views.py
+2. Uso y manejo de ORMS se definen en models.py y se interactúan en views.py
+3. Para la creación de formularios se utilizan tanto javascript como django.
+4. Revisar en detalles views.py
+   
 Para que puedas orientarte mejor revisa los comentarios sobre la estructura del proyecto:
 
 ```plaintext
 mega-games-django/
+├── media/ # Para guardar las imágenes pillow, de las imágenes de perfil
 ├── mega_games_django/ # Configuración del proyecto
 ├── store/             # Aplicación principal
 │   ├── static/        # Archivos estáticos
@@ -171,6 +180,7 @@ mega-games-django/
 │   │   ├── store/     # Páginas de la tienda, inicio / ofertas / detalles de productos / carrito / entre otras
 │   │   └── user/      # Páginas de inicio de sesión / registro / logout
 │   ├── backends.py    # Backend personalizado sobre la autenticación
+│   ├── forms.py       # Formulario para imágenes pillow (imagen de perfil)
 │   ├── models.py      # Modelos de la base de datos
 │   ├── urls.py        # Enrutamiento de urls del proyecto
 │   └── views.py       # Vistas de páginas y gestión de fetchs
@@ -180,10 +190,5 @@ mega-games-django/
 ```
 
 ## 🤝 Colaboradores:
-<details>
-  <summary>:zap: Josué Barra</summary>
-</details>
-
-<details>
-  <summary>:zap: Renato Rivera</summary>
-</details>
+<summary>:zap: Josué Barra</summary>
+<summary>:zap: Renato Rivera</summary>
