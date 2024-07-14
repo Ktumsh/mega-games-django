@@ -9,16 +9,20 @@ from django.views.decorators.http import require_http_methods
 from django.db import connection
 from django.http import JsonResponse
 from django.conf import settings
-from .models import Game, CartItem
+from .models import Game, CartItem, Like, Order, OrderItem
 from .forms import ProfileUpdateForm
 
 # VISTA PERSONALIZADA
-def my_view(request, template_name):
+def my_view(request, template_name, additional_context=None):
+    wishlist_count = Like.objects.filter(user=request.user).count() if request.user.is_authenticated else 0
     context = {
         'is_authenticated': request.user.is_authenticated,
         'username': request.user.username if request.user.is_authenticated else '',
-        'profile_image_url': request.user.profile.image.url if request.user.is_authenticated else ''
+        'profile_image_url': request.user.profile.image.url if request.user.is_authenticated else '',
+        'wishlist_count': wishlist_count
     }
+    if additional_context:
+        context.update(additional_context)
     return render(request, template_name, context)
 
 # INDEX
@@ -94,11 +98,13 @@ def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
     total_price = sum(item.game.precio_descuento or item.game.precio_original for item in cart_items)
     
-    context = {
-        'is_authenticated': request.user.is_authenticated,
-        'username': request.user.username if request.user.is_authenticated else ''
+    additional_context = {
+        'cart_items': cart_items,
+        'total_price': total_price
     }
-    return render(request, 'store/cart.html', {'cart_items': cart_items, 'total_price': total_price, **context})
+
+    return my_view(request, 'store/cart.html', additional_context)
+
 
 @login_required
 def add_to_cart(request, game_id):
@@ -190,6 +196,87 @@ def cart_items(request):
     ]
     return JsonResponse(items, safe=False)
 
+# ORDEN DE COMPRA
+@login_required
+def checkout(request):
+    user = request.user
+    cart_items = CartItem.objects.filter(user=user)
+    
+    if not cart_items.exists():
+        return redirect('view_cart')
+
+    total_price = sum(item.game.precio_descuento if item.game.precio_descuento else item.game.precio_original for item in cart_items)
+    
+    cart_items_data = []
+    for item in cart_items:
+        precio = item.game.precio_descuento if item.game.precio_descuento else item.game.precio_original
+        plataformas = [plataforma.strip() for plataforma in item.game.disponible_en]
+        cart_items_data.append({
+            'id': item.id,
+            'game': {
+                'id': item.game.id,
+                'nombre': item.game.nombre,
+                'imagen_alternativa': item.game.imagen_alternativa,
+                'precio': precio,
+                'cantidad': item.quantity,
+                'plataformas': plataformas,
+            }
+        })
+    
+    if request.method == 'POST':
+        order = Order.objects.create(user=user, total_price=total_price)
+        order.items.set(cart_items)
+        order.save()
+        
+        cart_items.delete()
+
+        return redirect('order_history')
+    
+    additional_context = {
+        'cart_items': cart_items_data,
+        'total_price': total_price,
+    }
+    
+    return my_view(request, 'store/checkout.html', additional_context)
+
+@login_required
+def place_order(request):
+    user = request.user
+    cart_items = CartItem.objects.filter(user=user)
+
+    if not cart_items.exists():
+        return redirect('cart')
+
+    total_price = sum(item.game.precio_descuento if item.game.precio_descuento else item.game.precio_original for item in cart_items)
+    
+    order = Order.objects.create(user=user, total_price=total_price)
+
+    for item in cart_items:
+        price = item.game.precio_descuento if item.game.precio_descuento else item.game.precio_original
+        OrderItem.objects.create(
+            order=order,
+            game=item.game,
+            quantity=item.quantity
+        )
+    
+    order.save()
+
+    cart_items.delete()
+
+    return redirect('order_history')
+
+
+@login_required
+def order_history(request):
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+
+    additional_context = {
+        'orders': orders
+    }
+    return my_view(request, 'account/history.html', additional_context)
+
+
+
 # LIKES
 @login_required
 @require_http_methods(["GET", "POST"])
@@ -197,17 +284,25 @@ def game_likes(request, group, game_id):
     game = get_object_or_404(Game, id=game_id, origen__iexact=group)
     
     if request.method == 'GET':
-        return JsonResponse({'likes': game.likes})
+        liked = Like.objects.filter(user=request.user, game=game).exists()
+        return JsonResponse({'likes': game.likes, 'liked': liked})
 
     if request.method == 'POST':
         data = json.loads(request.body)
         action = data.get('action')
         if action == 'like':
-            game.likes += 1
-        elif action == 'unlike' and game.likes > 0:
-            game.likes -= 1
-        game.save()
-        return JsonResponse({'likes': game.likes})
+            like, created = Like.objects.get_or_create(user=request.user, game=game)
+            if created:
+                game.likes += 1
+                game.save()
+        elif action == 'unlike':
+            like = Like.objects.filter(user=request.user, game=game).first()
+            if like:
+                like.delete()
+                game.likes -= 1
+                game.save()
+        liked = Like.objects.filter(user=request.user, game=game).exists()
+        return JsonResponse({'likes': game.likes, 'liked': liked})
 
 # OBTENCIÓN DE DATOS
 def games_list(request):
@@ -348,6 +443,46 @@ def juegos_y_tarjetas(request):
 def notifications(request):
     return my_view(request, 'profile/notifications.html')
 
+# WISHLIST
+@login_required
+def wishlist(request, username):
+    user = get_object_or_404(User, username=username)
+    liked_games = Game.objects.filter(like__user=user)
+    
+    games_data = []
+    for game in liked_games:
+        liked_at = Like.objects.get(user=user, game=game).liked_at.strftime('%d/%m/%Y')
+        plataformas = [plataforma.strip() for plataforma in game.disponible_en]
+        games_data.append({
+            'id': game.id,
+            'nombre': game.nombre,
+            'imagen': game.imagen_alternativa if game.imagen_alternativa else game.imagen,
+            'precio_original': str(game.precio_original),
+            'precio_descuento': str(game.precio_descuento) if game.precio_descuento else None,
+            'descuento': game.descuento,
+            'disponible_en': plataformas,
+            'background': game.background,
+            'added_on': liked_at
+        })
+
+    additional_context = {
+        'liked_games': games_data
+    }
+
+    return my_view(request, 'profile/wishlist.html', additional_context)
+
+
+@login_required
+@require_http_methods(["POST"])
+def remove_from_wishlist(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+    like = Like.objects.filter(user=request.user, game=game).first()
+    if like:
+        like.delete()
+        return JsonResponse({'message': 'Juego eliminado de la wishlist'})
+    return JsonResponse({'message': 'Juego no encontrado en la wishlist'}, status=404)
+
+
 # USO DE PILOW
 @login_required
 def profile(request, username):
@@ -359,14 +494,11 @@ def profile(request, username):
     else:
         p_form = ProfileUpdateForm(instance=request.user.profile)
 
-    context = {
-        'is_authenticated': request.user.is_authenticated,
-        'username': request.user.username if request.user.is_authenticated else '',
-        'p_form': p_form,
-        'profile_image_url': request.user.profile.image.url if request.user.is_authenticated else ''
+    additional_context = {
+        'p_form': p_form
     }
 
-    return render(request, 'profile/profile.html', context)
+    return my_view(request, 'profile/profile.html', additional_context)
 
 # OBTENCIÓN DE DETALLES DE JUEGOS
 def get_game_details(request, template_name):
@@ -415,11 +547,13 @@ def get_game_details(request, template_name):
         'origen': game.origen,
     }
 
+    wishlist_count = Like.objects.filter(user=request.user).count() if request.user.is_authenticated else 0
     context = {
         'game': json.dumps(game_data),
         'is_authenticated': request.user.is_authenticated,
         'username': request.user.username if request.user.is_authenticated else '',
-        'profile_image_url': request.user.profile.image.url if request.user.is_authenticated else ''
+        'profile_image_url': request.user.profile.image.url if request.user.is_authenticated else '',
+        'wishlist_count': wishlist_count
     }
     return render(request, template_name, context)
 

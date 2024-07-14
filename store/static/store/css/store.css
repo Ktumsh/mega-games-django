@@ -759,6 +759,37 @@ div#store_controls {
   display: flex;
 }
 
+div.store_header_btn {
+  box-shadow: 0 0 3px #000;
+}
+
+div.store_header_btn {
+  height: 20px;
+  position: relative;
+  margin-left: 1px;
+  border-radius: 1px;
+  float: left;
+}
+
+.store_header_btn_gray {
+  background-color: rgba(255, 255, 255, 0.5);
+  background-position: -34px 20px;
+  border-radius: 1px;
+}
+
+.store_header_btn_gray a {
+  color: #ffffff;
+}
+
+a.store_header_btn_content {
+  display: inline-block;
+  padding: 1px 25px;
+  margin: 0 1px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 11px;
+}
+
 .cart_control {
   text-align: center;
   margin-left: 2px;

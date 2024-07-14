@@ -1,0 +1,324 @@
+{% load static %} {% load currency_filters %}
+<!DOCTYPE html>
+<html class="responsive" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2.0"
+    />
+    <link rel="manifest" href="{% static 'manifest.json' %}" />
+    <meta name="theme-color" content="#131019" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="keywords"
+      content="videojuegos, tienda, online, tienda de videojuegos, juegos, ofertas, mega games"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <meta property="og:title" content="Mega Games Store" />
+    <meta
+      property="og:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      property="og:image"
+      content="https://store-megagames.onrender.com/store/images/mega-games-logo.webp"
+    />
+    <meta property="og:url" content="https://store-megagames.onrender.com/" />
+    <meta property="og:site_name" content="Mega Games" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mega Games Store" />
+    <meta
+      name="twitter:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="twitter:image"
+      content="https://store-megagames.onrender.com/store/images/mega-games-logo.webp"
+    />
+    <meta name="twitter:url" content="https://store-megagames.onrender.com/" />
+    <title>Lista de deseados de {{ username }}</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://store-megagames.onrender.com/assets/public/mega-games-logo.svg"
+    />
+    <link href="{% static 'store/css/store.css' %}" rel="stylesheet" />
+    <link href="{% static 'store/css/details.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'store/css/dialog-modal.css' %}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preconnect"
+      href="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin
+    />
+    <script>
+      window.userContext = {
+        isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
+        username: "{{ username }}",
+        profileImageUrl: "{{ profile_image_url }}",
+        wishlistCount: {{ wishlist_count }}
+      };
+    </script>
+    <style>
+      body {
+        color: white !important;
+        font-family: "Motiva Sans", Arial, Helvetica, sans-serif !important;
+        background-color: #131019 !important;
+      }
+    </style>
+  </head>
+  <body class="main">
+    <!-- HEADER 🔴 -->
+    <div class="HamburgerMenuSlot"></div>
+    <div class="HeaderSlotMobile"></div>
+    <div class="HeaderSlotDesktop"></div>
+    <!-- NAVBAR 🔴 -->
+    <div class="NavbarSlotPWA"></div>
+    <div class="NavbarSlotMobile"></div>
+    <div class="NavbarSlotDesktop"></div>
+    <div class="NavbarSlot"></div>
+    <div class="divider_header"></div>
+    <!-- CONTENT -->
+    <div id="page_root">
+      <div id="wishlistPage">
+        <div id="pageGameBg" class="page_game_bg"></div>
+        <div class="cart_page_container">
+          <div class="wishlist_header">
+            <div class="profile_avatar_frame">
+              <img src="{{ profile_image_url }}" />
+            </div>
+            <h2>Lista de deseados de {{ username }}</h2>
+          </div>
+          <div class="cart_details_container">
+            <div id="wishlistItems" class="cart_details_area">
+              {% if liked_games %} {% for game in liked_games %}
+              <div
+                id="gameCard-{{ game.id }}"
+                data-background="{{ game.background }}"
+                class="cart_top_area"
+              >
+                <div class="game_area_ctn">
+                  <div class="top_area">
+                    <div class="game_image">
+                      <a href="">
+                        <img src="{{ game.imagen }}" alt="{{ game.nombre }}" />
+                      </a>
+                    </div>
+                    <div class="game_info_ctn">
+                      <div class="game_info game_title">
+                        <div class="title">{{ game.nombre }}</div>
+                      </div>
+                      <div class="game_info game_platform">
+                        <span id="platform" class="platform_label">
+                          {% for platform in game.disponible_en %}
+                          <span
+                            title="Disponible en {{ platform }}"
+                            class="platform_img {{ platform }}"
+                          >
+                          </span>
+                          {% endfor %}
+                        </span>
+                      </div>
+                      <div class="game_price">
+                        <span class="price">
+                          {% if game.descuento %}
+                          <span id="discount" class="discount"
+                            >{{ game.descuento }}
+                          </span>
+                          <div class="price_label">
+                            <div class="original_price">
+                              {{ game.precio_original|clp }}
+                            </div>
+                            <div class="final_price">
+                              {{ game.precio_descuento|clp }}
+                            </div>
+                          </div>
+                          {% else %}
+                          <div class="price_label">
+                            <div class="final_price">
+                              {{ game.precio_original|clp }}
+                            </div>
+                          </div>
+                          {% endif %}
+                        </span>
+                        <button
+                          id="addToCart-{{ game.id }}"
+                          class="cart_page_btn topay_bottom"
+                          data-id="{{ game.id }}"
+                          data-nombre="{{ game.nombre }}"
+                          data-imagen="{{ game.imagen }}"
+                          data-precio-original="{{ game.precio_original|clp }}"
+                          data-precio-descuento="{{ game.precio_descuento|clp }}"
+                          data-descuento="{{ game.descuento }}"
+                          data-disponible-en="{{ game.disponible_en|join:',' }}"
+                        >
+                          Añadir al carro
+                        </button>
+                      </div>
+                      <div class="game_info game_additional">
+                        <div class="add_delete">
+                          <div class="addedon">
+                            Añadido el {{ game.added_on }}
+                          </div>
+                          <div class="delete" data-id="{{ game.id }}">
+                            Eliminar
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %} {% else %}
+              <div id="emptyWishlist" class="empty_cart">
+                Tu lista de deseos está vacía.
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL -->
+    <div id="modal-template" class="full_modal_overlay" style="display: none">
+      <div class="modal_overlay_content modal_overlay_background"></div>
+      <div class="modal_overlay_content" tabindex="-1">
+        <div class="modal_position event_display_share_dialog" tabindex="0">
+          <div class="modal_position_content">
+            <div class="modal_position_top_bar"></div>
+            <div class="modal_position_dismiss">
+              <div class="close_button">
+                <svg
+                  version="1.1"
+                  id="Layer_2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="256px"
+                  height="256px"
+                  viewBox="0 0 256 256"
+                >
+                  <line
+                    fill="none"
+                    stroke="#FFFFFF"
+                    stroke-width="45"
+                    stroke-miterlimit="10"
+                    x1="212"
+                    y1="212"
+                    x2="44"
+                    y2="44"
+                  ></line>
+                  <line
+                    fill="none"
+                    stroke="#FFFFFF"
+                    stroke-width="45"
+                    stroke-miterlimit="10"
+                    x1="44"
+                    y1="212"
+                    x2="212"
+                    y2="44"
+                  ></line>
+                </svg>
+              </div>
+            </div>
+            <div
+              class="dialog_content dialog_layout generic_confirm_dialog dialog_center_vertically"
+            >
+              <div class="dialog_content_inner_width">
+                <div class="dialog_header">¡Añadido a tu carro!</div>
+                <div class="dialog_body">
+                  <div class="dialog_body_text">
+                    <div class="dialog_game_area_ctn">
+                      <div class="label_area">
+                        <div class="dialog_game_image">
+                          <a href="">
+                            <img id="dialogGameImage" src="" alt="" />
+                          </a>
+                        </div>
+                        <div class="dialog_game_info">
+                          <div class="game_info d_game_title">
+                            <div id="dialogGameTitle" class="title"></div>
+                          </div>
+                          <div class="game_info d_game_platform">
+                            <div
+                              id="dialogPlatform"
+                              class="platform_label"
+                            ></div>
+                          </div>
+                          <div class="game_price">
+                            <span class="price">
+                              <span id="dialogDiscount" class="discount"></span>
+                              <div
+                                id="dialogPriceLabel"
+                                class="price_label"
+                              ></div>
+                            </span>
+                          </div>
+                          <div class="game_info d_game_additional">
+                            <div class="add_delete">
+                              <div class="add" id="dialogAddButton">Añadir</div>
+                              |
+                              <div class="delete" id="dialogDeleteButton">
+                                Eliminar
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dialog_footer">
+                    <button class="cart_page_btn keep_shopping" type="button">
+                      Seguir comprando
+                    </button>
+                    <a href="/cart" class="cart_page_btn topay_bottom"
+                      >Ver mi carro</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="FooterSlot"></div>
+
+    <script
+      src="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="{% static 'store/js/layout/load-layout.js' %}"></script>
+    <script defer src="{% static 'store/js/user/user-events.js' %}"></script>
+    <script
+      defer
+      src="{% static 'store/js/managment/search-manager.js' %}"
+    ></script>
+    <script
+      defer
+      src="{% static 'store/js/managment/wishlist-manager.js' %}"
+    ></script>
+  </body>
+</html>

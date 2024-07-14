@@ -18,6 +18,7 @@
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 8;
 }
 
 .modal_overlay_content.active {
@@ -576,13 +577,13 @@ button.dialog_button {
   content: none;
 }
 
-#detailsPage .dialog_content {
+.dialog_content {
   min-width: 600px;
   font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
 
-#detailsPage .dialog_footer {
+.dialog_footer {
   display: flex;
   margin-top: 20px;
   gap: 20px;
@@ -604,7 +605,7 @@ button.dialog_button {
     max-height: 95vh;
   }
 
-  #detailsPage .dialog_content {
+  .dialog_content {
     min-width: auto;
   }
 
@@ -621,7 +622,7 @@ button.dialog_button {
 }
 
 @media screen and (max-width: 440px) {
-  #detailsPage .dialog_footer {
+  .dialog_footer {
     flex-direction: column;
   }
 }

@@ -69,7 +69,8 @@
       window.userContext = {
         isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
         username: "{{ username }}",
-        profileImageUrl: "{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'store/images/profile/user-avatar.jpg' %}{% endif %}"
+        profileImageUrl: "{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'store/images/profile/user-avatar.jpg' %}{% endif %}",
+        wishlistCount: {{ wishlist_count }}
       };
     </script>
     <style>
@@ -118,9 +119,12 @@
                     Los impuestos de venta se calcularán durante el pago (si es
                     aplicable)
                   </div>
-                  <button class="cart_page_btn topay_bottom">
+                  <a
+                    href="{% url 'checkout' %}"
+                    class="cart_page_btn topay_bottom"
+                  >
                     Continuar con el pago
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

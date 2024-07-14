@@ -1,0 +1,539 @@
+body {
+  background: rgb(37, 4, 98);
+  background: linear-gradient(
+    to bottom,
+    rgba(37, 4, 98, 0.7) 0%,
+    rgba(37, 4, 98, 0) 100%
+  );
+}
+
+.checkout .page_header_ctn {
+  margin-bottom: 2px;
+}
+
+.page_header_ctn {
+  background-image: linear-gradient(
+    to right,
+    transparent 20%,
+    rgba(59, 52, 134, 0.7) 40%,
+    rgba(59, 52, 134, 0.7) 60%,
+    transparent 80%
+  );
+}
+
+#checkout_header .content {
+  position: relative;
+  max-width: 940px;
+  min-height: 104px;
+  margin: 0 auto;
+  padding: 0 2%;
+}
+
+span#logo_holder {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#checkout_megagames_logo {
+  float: right;
+  right: 0;
+  padding-top: 30px;
+  width: 176px;
+  height: 44px;
+  font-family: "Space Grotesk", Sans-serif;
+  font-optical-sizing: auto;
+  font-size: 1rem;
+}
+
+#checkout_megagames_logo img {
+  width: 100%;
+}
+
+#checkout_pipeline,
+#receipt_pipeline {
+  padding-top: 33px;
+  padding-bottom: 12px;
+}
+
+.cart_tab,
+.cart_tab_spacer {
+  display: inline-block;
+  vertical-align: middle;
+  color: #c6d4df;
+  font-size: 13px;
+  cursor: default;
+  position: relative;
+}
+
+.cart_tab_left_on {
+  position: absolute;
+  height: 9px;
+  top: 30px;
+  left: 1px;
+  right: 1px;
+  background-position: top center;
+}
+
+.cart_tab_on,
+.cart_tab_off,
+.cart_tab_inactive {
+  padding: 7px 11px;
+  margin-right: 1px;
+}
+
+.cart_tab_on {
+  background-color: #5809ec;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.cart_tab_off {
+  color: #beb4d0;
+}
+
+.cart_tab_spacer {
+  width: 4px;
+  height: 8px;
+  background-image: url("../images/icons/checkout_tab_spacer.gif");
+  background-repeat: no-repeat;
+  margin: 10px 10px;
+}
+
+body.v6 .page_content {
+  width: 940px;
+  margin: 0 auto;
+  display: flex;
+}
+
+body.v6 h3 {
+  color: #ffffff;
+  font-size: 22px;
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: normal;
+  font-weight: normal;
+}
+
+.checkout_content_box h3.tab_header {
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: 300;
+  font-weight: normal;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 30px;
+  margin-bottom: 8px;
+}
+
+#payment_info_tab .checkout_content .payment_info_form_area {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 16px;
+}
+
+.payment_info_form_area {
+  animation-name: bg_anim;
+  animation-duration: 0.8s;
+}
+
+.checkout_tab .form_row {
+  font-size: 11px;
+}
+
+.checkout_tab .form_row_sizable,
+.checkout_tab .form_row {
+  margin-top: 5px;
+  margin-bottom: 12px;
+  clear: both;
+}
+
+.checkout_tab .form_left {
+  clear: left;
+  float: left;
+  text-align: left;
+}
+
+.checkout_tab .form_right {
+  clear: right;
+  float: right;
+  text-align: left;
+  width: 292px;
+}
+
+.checkout_tab .form_right label,
+.checkout_tab .form_left label,
+.checkout_tab .form_row_sizable label,
+.checkout_tab .form_row label {
+  display: block;
+  text-align: left;
+  margin-bottom: 2px;
+  font-size: 11px;
+}
+
+#payment_info_method_label {
+  font-size: 13px;
+}
+
+.dselect_container {
+  font-size: 12px;
+}
+
+.dselect_container {
+  position: relative;
+}
+
+.checkout_main .dselect_container {
+  width: 222px;
+  padding: 0;
+  display: inline-block;
+}
+
+#payment_method_dselect_container {
+  width: 250px;
+}
+
+.dselect_container a.trigger,
+.dselect_container a.activetrigger {
+  display: block;
+  color: #67c1f5;
+  padding: 0 30px 0 8px;
+  font-size: 12px;
+  line-height: 21px;
+  border: 0;
+  border-radius: 3px;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+
+.checkout_main .dselect_container a,
+.checkout_main .dselect_container a:hover,
+.checkout_main .dselect_container a:active,
+.checkout_main .dselect_container a:visited {
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.checkout_content_box input[type="text"],
+.checkout_content_box input[type="password"],
+.checkout_content_box select,
+.checkout_content_box textarea,
+.checkout_main .dselect_container a.trigger {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: 1px solid #413993;
+  border-radius: 3px;
+  width: 98%;
+  max-width: calc(100% - 12px);
+  padding: 5px;
+  margin-top: 3px;
+  font-size: 16px;
+  line-height: 21px;
+  text-decoration: none !important;
+}
+
+.checkout_main .dselect_container a.trigger {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#verify_country_notes {
+  overflow: hidden;
+  font-size: 13px;
+}
+
+.checkout_content_box a {
+  color: #ffffff;
+  text-decoration: underline !important;
+}
+
+.checkout_tab .form_row_sizable,
+.checkout_tab #youll_get_to_review {
+  padding: 8px;
+  padding-left: 0px;
+  font-size: 13px;
+}
+
+.btnv6_green_white_innerfade {
+  border-radius: 2px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none !important;
+  line-height: 32px;
+  color: #dfe3e6;
+  font-size: 14px;
+  background: transparent;
+  background: linear-gradient(
+    to right,
+    rgba(190, 157, 251, 1) 20%,
+    rgba(88, 9, 236, 1) 100%
+  );
+  background-position: right 0;
+  background-size: 200%;
+  transition-property: opacity, background, color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.btnv6_green_white_innerfade:hover {
+  background: linear-gradient(
+    to right,
+    rgba(190, 157, 251, 1) 20%,
+    rgba(88, 9, 236, 1) 100%
+  );
+  background-position: 0%;
+  background-size: 200%;
+  color: #fff;
+}
+
+.btnv6_green_white_innerfade:active {
+  background: linear-gradient(
+    to right,
+    rgba(190, 157, 251, 1) 20%,
+    rgba(88, 9, 236, 1) 100%
+  );
+  background-position: 40%;
+  transition-duration: 0.04s;
+}
+
+.button_row .btn_medium {
+  margin-left: 12px;
+}
+
+.button_row .continue,
+.button_row .working,
+.cart_checkout_buttons .continue {
+  float: right;
+  margin-right: 16px;
+}
+
+.btnv6_blue_hoverfade {
+  border-radius: 2px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none !important;
+  line-height: 32px;
+  color: #dfe3e6;
+  font-size: 14px;
+  background: transparent;
+  background: linear-gradient(
+    to right,
+    rgba(190, 157, 251, 1) 20%,
+    rgba(88, 9, 236, 1) 100%
+  );
+  background-position: right 0;
+  background-size: 200%;
+  transition-property: opacity, background, color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  background: #413993;
+}
+
+a.btnv6_blue_hoverfade {
+  text-decoration: none !important;
+}
+
+.btnv6_blue_hoverfade:hover {
+  color: #fff;
+  background: #584fba;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.button_row .btn_medium {
+  margin-left: 12px;
+}
+
+.btn_medium > span,
+input.btn_medium {
+  padding: 0 15px;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+div.leftcol {
+  width: 616px;
+  float: left;
+}
+
+div.rightcol {
+  width: 308px;
+  margin-left: 14px;
+  float: right;
+}
+
+.checkout div.rightcol {
+  margin-top: 48px;
+}
+
+.block {
+  margin: 16px 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.block {
+  margin-bottom: 16px;
+}
+
+.block .block_header {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 4px 4px 6px;
+  color: #c7d5e0;
+  font-size: 13px;
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.block .block_header {
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: 300;
+  font-weight: normal;
+  font-size: 17px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: transparent;
+  padding: 0px 0px 4px 0px;
+}
+
+body.checkout .block .block_header {
+  padding: 0 12px;
+  line-height: 32px;
+}
+
+.block_content_inner {
+  padding: 8px;
+}
+
+.block_content {
+  border: 1px solid #28394d;
+  border-radius: 2px;
+}
+
+.block_content_inner {
+  padding: 4px 4px 4px 4px;
+  overflow: hidden;
+}
+
+body.checkout .block .block_content {
+  padding: 12px;
+  border: none;
+}
+
+.rightcol p {
+  margin: 5px 0;
+  font-size: 13px;
+}
+
+img.payment_method_logo {
+  display: block;
+  float: left;
+}
+
+.checkout_review_cart_item {
+  margin: 3px 0;
+  position: relative;
+  min-height: 77px;
+  line-height: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0 2.5%;
+}
+
+.checkout_review_item_img {
+  float: left;
+  padding-top: 16px;
+  width: 120px;
+}
+
+.checkout_review_item_price {
+  float: right;
+  padding-top: 23px;
+  text-align: right;
+}
+
+.checkout_review_item_desc {
+  overflow: hidden;
+  padding: 23px 3% 0 3%;
+  color: #dfd9ec;
+  font-size: 13px;
+}
+
+.checkout_review_item_img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.checkout_review_item_price .price {
+  color: #dfd9ec;
+  font-size: 13px;
+}
+
+.checkout_review_item_desc .checkout_review_item_platform {
+  float: right;
+}
+
+.checkout_content_box .checkout_content.cart,
+.checkout_content_box .checkout_content.confirm {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  margin-top: 4px;
+}
+
+.cart_totals_area {
+  margin-left: auto;
+  margin-top: 3px;
+  padding: 16px;
+}
+
+.cart_total_row {
+  position: relative;
+  text-align: left;
+  margin-top: 3px;
+  color: #a99fbb;
+}
+
+.cart_total_row {
+  font-size: 13px;
+  text-align: left;
+}
+
+.cart_total_row#cart_price_total_text,
+.cart_total_row#cart_price_total_text,
+.cart_total_row#cart_price_shipping_text,
+.price {
+  font-size: 13px;
+  color: #a99fbb;
+}
+
+.cart_totals_area .price {
+  position: absolute;
+  right: 0px;
+  text-align: right;
+  color: #dfd9ec;
+  font-size: 13px;
+  padding-top: 2px;
+}
+
+.cart_total_rule {
+  margin: 9px 0px;
+  border-top: 1px solid #3b3486;
+}
+
+.checkout_review_tax_notice {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #dfd9ec;
+}
+
+@keyframes bg_anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

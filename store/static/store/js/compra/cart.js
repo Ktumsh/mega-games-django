@@ -56,10 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 "0"
             );
 
-            // Sumar el precio al total
             total += priceNumber;
 
-            // Formatear el precio para mostrarlo
             const formattedPrice = priceNumber.toLocaleString("es-CL");
 
             let originalPriceHTML = "";
@@ -191,7 +189,24 @@ document.addEventListener("DOMContentLoaded", () => {
           "#cart_status_data .cart_link"
         );
         if (cartCountElement) {
-          cartCountElement.textContent = `Carro (${data.totalItems})`;
+          const svgElement = cartCountElement.querySelector("svg");
+
+          if (svgElement) {
+            if (
+              svgElement.nextSibling &&
+              svgElement.nextSibling.nodeType === Node.TEXT_NODE
+            ) {
+              svgElement.nextSibling.textContent = ` Carro (${data.totalItems})`;
+            } else {
+              const textNode = document.createTextNode(
+                ` Carro (${data.totalItems})`
+              );
+              svgElement.parentNode.insertBefore(
+                textNode,
+                svgElement.nextSibling
+              );
+            }
+          }
         }
       });
   }

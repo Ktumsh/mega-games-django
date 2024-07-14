@@ -21,6 +21,10 @@ urlpatterns = [
     path('api/cart/remove/<int:game_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('api/cart/clear/', views.clear_cart, name='clear_cart'),
     path('api/cart/returnStock/<int:game_id>/', views.return_stock, name='return_stock'),
+    # ORDEN DE COMPRA
+    path('checkout/', views.checkout, name='checkout'),
+    path('account/history/', views.order_history, name='order_history'),
+    path('place_order/', views.place_order, name='place_order'),
     # GESTION DE JUEGOS
     path('api/search/', views.search_games, name='search_games'),
     path('api/games/reduceStock/<int:game_id>/', views.reduce_stock, name='reduce_stock'),
@@ -46,6 +50,8 @@ urlpatterns = [
     # PERFIL
     path('profiles/notifications/', views.notifications, name='notifications'),
     path('profile/<str:username>/', views.profile, name='profile'),
+    path('wishlist/<str:username>/', views.wishlist, name='wishlist'),
+    path('remove-from-wishlist/<int:game_id>/', views.remove_from_wishlist, name='remove_from_wishlist'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

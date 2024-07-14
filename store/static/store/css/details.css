@@ -1428,7 +1428,7 @@ body {
 .cart_details_container .game_price {
   display: flex;
   flex-direction: row;
-  gap: 4px;
+  gap: 10px;
 }
 
 .cart_details_container .game_price .price {
@@ -1600,6 +1600,63 @@ body {
   margin-bottom: 10px;
   font-size: 12px;
   color: #ccd5e0;
+}
+
+.wishlist_header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 15px 0 25px 0;
+}
+
+.wishlist_header .profile_avatar_frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #57cbde;
+  background: -webkit-linear-gradient(
+    top,
+    rgba(190, 157, 251, 1) 5%,
+    rgba(88, 9, 236, 1) 95%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(190, 157, 251, 1) 5%,
+    rgba(88, 9, 236, 1) 95%
+  );
+  padding: 2px;
+  filter: none;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wishlist_header h2 {
+  color: #fff;
+  font-size: 26px;
+  margin-left: 15px;
+  margin-bottom: 0px;
+}
+
+.wishlist_header img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+}
+
+.addedon {
+  font-size: 11px;
+  overflow: hidden;
+  line-height: 19px;
+  margin-right: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+#wishlistPage .topay_bottom {
+  margin-bottom: 0px;
 }
 
 .topay_bottom {

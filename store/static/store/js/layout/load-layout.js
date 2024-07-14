@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div id="account_dropdown" class="popup_block_new" style="visibility: visible; top: 25px; left: 24.7344px; right: 65px; display: none; opacity: 1;">
                   <div class="popup_body popup_menu">
                     <a id="accountLink" class="popup_menu_item" href="#">Ver mi perfil</a>
-                    <a class="popup_menu_item" href="#">Detalles de la cuenta: <span id="account_name" class="account_name"></span></a>
+                    <a class="popup_menu_item" href="/account/history/">Detalles de la cuenta: <span id="account_name" class="account_name"></span></a>
                     <span class="popup_menu_item" id="language_pulldown_account" onclick="ShowMenu('language_dropdown_account');">Cambiar idioma</span>
                     <div class="popup_block_new language" id="language_dropdown_account" style="display: none; opacity: 0; left: -274px; top: 62px;"></div>
                     <a id="logout_link" class="popup_menu_item" href="/login">Cerrar sesión...</a>
@@ -337,13 +337,23 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="content">
               <div id="store_controls">
                 <div id="cart_status_data" class="cart_status_flex">
+                  <div class="store_header_btn_gray store_header_btn">
+                    <div class="store_header_btn_caps store_header_btn_leftcap"></div>
+                    <div class="store_header_btn_caps store_header_btn_rightcap"></div>
+                    <a
+                      id="wishlist_link"
+                      class="store_header_btn_content"
+                      href="#"
+                    >
+                      Lista de deseados (<span id="wishlist_item_count_value"></span>)
+                    </a>
+                  </div>
                   <div data-featuretarget="shoppingcart-count-widget" data-props="{}">
                     <div class="cart_control">
                       <a class="cart_link" href="/cart">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none" class="cart_icon">
                           <path d="M33.63 8.05005L30.11 20.81C29.9416 21.453 29.5645 22.0219 29.0378 22.4273C28.5111 22.8328 27.8647 23.0518 27.2 23.05H14.75C14.1022 23.0507 13.4715 22.8416 12.9524 22.4541C12.4333 22.0665 12.0536 21.5213 11.87 20.9L7.56 8.05005H2V4.05005H8.28C8.90845 4.05122 9.52067 4.24973 10.0302 4.61755C10.5398 4.98538 10.921 5.50394 11.12 6.10005L11.78 8.10005L33.63 8.05005ZM15 27.05C14.5055 27.05 14.0222 27.1967 13.6111 27.4714C13.2 27.7461 12.8795 28.1365 12.6903 28.5933C12.5011 29.0502 12.4516 29.5528 12.548 30.0378C12.6445 30.5227 12.8826 30.9682 13.2322 31.3178C13.5819 31.6674 14.0273 31.9056 14.5123 32.002C14.9972 32.0985 15.4999 32.049 15.9567 31.8597C16.4135 31.6705 16.804 31.3501 17.0787 30.939C17.3534 30.5278 17.5 30.0445 17.5 29.55C17.5 28.887 17.2366 28.2511 16.7678 27.7823C16.2989 27.3134 15.663 27.05 15 27.05ZM27 27.05C26.5055 27.05 26.0222 27.1967 25.6111 27.4714C25.2 27.7461 24.8795 28.1365 24.6903 28.5933C24.5011 29.0502 24.4516 29.5528 24.548 30.0378C24.6445 30.5227 24.8826 30.9682 25.2322 31.3178C25.5819 31.6674 26.0273 31.9056 26.5123 32.002C26.9972 32.0985 27.4999 32.049 27.9567 31.8597C28.4135 31.6705 28.804 31.3501 29.0787 30.939C29.3534 30.5278 29.5 30.0445 29.5 29.55C29.5 28.887 29.2366 28.2511 28.7678 27.7823C28.2989 27.3134 27.663 27.05 27 27.05Z" fill="currentColor"></path>
                         </svg>
-                        Carro
                       </a>
                     </div>
                   </div>
@@ -475,7 +485,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (navbarSlot) {
       navbarSlot.appendChild(navbarContainer);
-      addStoreNavSearchEvents();
+
+      const wishlistLink = document.getElementById("wishlist_link");
+      if (wishlistLink) {
+        wishlistLink.href = `/wishlist/${username}/`;
+      }
+
+      const wishlistItemCount = window.userContext.wishlistCount;
+      const wishlistItemCountElement = document.getElementById(
+        "wishlist_item_count_value"
+      );
+      if (wishlistItemCountElement) {
+        wishlistItemCountElement.textContent = wishlistItemCount;
+      }
       addSearchEvents();
     }
   }
@@ -615,7 +637,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     navbarSlot.appendChild(navbarContainer);
 
-    addStoreNavSearchEvents();
     addSearchEvents();
   }
 
@@ -1037,6 +1058,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "/help/",
       "/profiles/notifications/",
       `/profile/${username}/`,
+      "/account/history/",
     ];
 
     if (pathsToRemoveNavbar.includes(currentPath)) {
@@ -1110,7 +1132,24 @@ document.addEventListener("DOMContentLoaded", () => {
           "#cart_status_data .cart_link"
         );
         if (cartCountElement) {
-          cartCountElement.textContent = `Carro (${data.totalItems})`;
+          const svgElement = cartCountElement.querySelector("svg");
+
+          if (svgElement) {
+            if (
+              svgElement.nextSibling &&
+              svgElement.nextSibling.nodeType === Node.TEXT_NODE
+            ) {
+              svgElement.nextSibling.textContent = ` Carro (${data.totalItems})`;
+            } else {
+              const textNode = document.createTextNode(
+                ` Carro (${data.totalItems})`
+              );
+              svgElement.parentNode.insertBefore(
+                textNode,
+                svgElement.nextSibling
+              );
+            }
+          }
         }
       })
       .catch((error) => {

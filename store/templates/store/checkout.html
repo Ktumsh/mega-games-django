@@ -1,0 +1,413 @@
+{% load static %} {% load currency_filters %}
+<!DOCTYPE html>
+<html class="responsive" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=2.0"
+    />
+    <link rel="manifest" href="{% static 'manifest.json' %}" />
+    <meta name="theme-color" content="#131019" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="keywords"
+      content="videojuegos, tienda, online, tienda de videojuegos, juegos, ofertas, mega games"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <meta property="og:title" content="Mega Games Store" />
+    <meta
+      property="og:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      property="og:image"
+      content="https://store-megagames.onrender.com/store/images/mega-games-logo.webp"
+    />
+    <meta property="og:url" content="https://store-megagames.onrender.com/" />
+    <meta property="og:site_name" content="Mega Games" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mega Games Store" />
+    <meta
+      name="twitter:description"
+      content="Mega Games es el destino definitivo para gamers. Obtén todo lo relacionado con juegos de PC, PlayStation, Xbox y Nintendo de forma segura y asequible."
+    />
+    <meta
+      name="twitter:image"
+      content="https://store-megagames.onrender.com/store/images/mega-games-logo.webp"
+    />
+    <meta name="twitter:url" content="https://store-megagames.onrender.com/" />
+    <title>Comprar</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://store-megagames.onrender.com/assets/public/mega-games-logo.svg"
+    />
+    <link href="{% static 'store/css/store.css' %}" rel="stylesheet" />
+    <link href="{% static 'store/css/checkout.css' %}" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preconnect"
+      href="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin
+    />
+    <script>
+      window.userContext = {
+        isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
+        username: "{{ username }}",
+      };
+    </script>
+    <style>
+      body {
+        color: white !important;
+        font-family: "Motiva Sans", Arial, Helvetica, sans-serif !important;
+        background-color: #131019 !important;
+      }
+    </style>
+  </head>
+  <body class="v6 cart_page checkout responsive_page">
+    <div class="page_header_ctn search">
+      <div id="checkout_header">
+        <div class="content">
+          <div id="checkout_megagames_logo">
+            <span id="logo_holder">
+              <a href="/" id="checkout_logo_default">
+                <img
+                  src="{% static 'store/images/mega-games-logo.svg' %}"
+                  height="44"
+                />
+                <a href="/">Mega Games</a>
+              </a>
+            </span>
+          </div>
+          <div id="checkout_pipeline">
+            <div class="cart_tab">
+              <div
+                class="cart_tab_left_on"
+                id="payment_info_tab_select_left"
+              ></div>
+              <div class="cart_tab_on" id="payment_info_tab_select">
+                Información del pago
+              </div>
+              <div
+                class="cart_tab_right_on"
+                id="payment_info_tab_select_right"
+              ></div>
+            </div>
+            <div class="cart_tab_spacer"></div>
+            <div class="cart_tab">
+              <div class="cart_tab_left_off" id="review_tab_select_left"></div>
+              <div class="cart_tab_off" id="review_tab_select">
+                Revisión + Compra
+              </div>
+              <div
+                class="cart_tab_right_off"
+                id="review_tab_select_right"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="checkout_page_content" class="page_content payment_info_active">
+      <!--LEFT COL-->
+      <div class="leftcol" id="cart_area">
+        <div class="checkout_content_box checkout_main">
+          <div id="payment_info_tab" class="checkout_tab">
+            <div class="checkout_content">
+              <h3 id="payment_header" class="tab_header">Método de pago</h3>
+              <div class="payment_info_form_area">
+                <div class="form_row" id="payment_row_one">
+                  <div>
+                    <div class="form_left">
+                      <label id="payment_info_method_label" for="payment_method"
+                        >Selecciona un método de pago</label
+                      >
+                    </div>
+                    <div style="clear: both"></div>
+                  </div>
+                  <div>
+                    <div class="form_left">
+                      <input
+                        type="hidden"
+                        name="stored_payment_method"
+                        id="stored_payment_method"
+                      />
+                      <div
+                        class="dselect_container"
+                        id="payment_method_dselect_container"
+                      >
+                        <input
+                          id="payment_method"
+                          type="hidden"
+                          name="payment_method"
+                        />
+                        <a
+                          class="trigger"
+                          tabindex="100"
+                          id="payment_method_trigger"
+                          href="javascript:void(0)"
+                          >Visa (Nacional)</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="form_row"
+                  id="payment_row_country_verification"
+                  style="display: block"
+                >
+                  <div id="verify_country_notes">
+                    Si tu dirección de facturación no se encuentra en Chile,
+                    <a href="javascript:void(0);"
+                      >ajusta tu región de la tienda</a
+                    >
+                  </div>
+                </div>
+                <p id="youll_get_to_review" style="display: block">
+                  Podrás revisar tu pedido antes de que se procese.
+                </p>
+                <br clear="all" />
+                <div class="button_row">
+                  <button
+                    id="submit_payment_info_btn"
+                    class="btnv6_green_white_innerfade btn_medium continue"
+                  >
+                    <span>Continuar</span>
+                  </button>
+                  <div
+                    id="payment_method_previous_button"
+                    style="display: block"
+                  >
+                    <a
+                      href="{% url 'view_cart' %}"
+                      class="btnv6_blue_hoverfade btn_medium"
+                    >
+                      <span>Atrás</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- REVISIÓN COMPRA -->
+          <div id="review_order" class="checkout_tab" style="display: none">
+            <div class="checkout_content">
+              <h3 class="tab_header">Revisión y Compra</h3>
+              <div class="payment_info_form_area">
+                <div class="cart_item_container">
+                  {% for item in cart_items %}
+                  <div class="checkout_review_cart_item even">
+                    <div class="checkout_review_item_img">
+                      <img
+                        src="{{ item.game.imagen_alternativa }}"
+                        width="120"
+                        height="45"
+                        border="0"
+                      />
+                    </div>
+                    <div class="checkout_review_item_price">
+                      <div class="price">{{ total_price|clp }}</div>
+                    </div>
+                    <div class="checkout_review_item_desc">
+                      <div class="checkout_review_item_platform">
+                        {% for platform in item.game.plataformas %}
+                        <span class="platform_img {{ platform }}"></span>
+                        {% endfor %}
+                      </div>
+                      {{ item.game.nombre }}<br />
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="checkout_content confirm">
+                  <div class="cart_totals_area">
+                    <div id="cart_price_summary" class="cart_total_row">
+                      <div id="review_subtotal_value" class="price">
+                        {{ total_price|clp }}
+                      </div>
+                      <div id="cart_price_summary_subtotal">Subtotal:</div>
+                    </div>
+                    <div class="cart_total_rule"></div>
+                    <div id="cart_price_total" class="cart_total_row">
+                      <div id="review_total_value" class="price">
+                        {{ total_price|clp }}
+                      </div>
+                      <div id="cart_price_total_text">Total:</div>
+                    </div>
+                    <div
+                      id="checkout_review_tax_notice"
+                      class="checkout_review_tax_notice"
+                      style="display: block"
+                    >
+                      Todos los precios incluyen IVA (donde sea aplicable).
+                    </div>
+                  </div>
+                  <div class="button_row">
+                    <button
+                      id="place_order_btn"
+                      class="btnv6_green_white_innerfade btn_medium continue"
+                    >
+                      <span>Comprar</span>
+                    </button>
+                    <button
+                      id="back_to_payment_btn"
+                      class="btnv6_blue_hoverfade btn_medium"
+                    >
+                      <span>Atrás</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--RIGHT COL-->
+      <div class="rightcol">
+        <div id="col_right_payment_info" class="block">
+          <div class="block_header">Métodos de pago</div>
+          <div class="block_content block_content_inner">
+            <p>Aceptamos los siguientes métodos de pago seguro:</p>
+            <p>
+              <img
+                src="{% static 'store/images/payments/payment_visachile.png' %}"
+                class="payment_method_logo"
+                title="Visa (Nacional)"
+                width="55"
+                height="42"
+              />
+              <img
+                class="payment_method_logo"
+                title="Mastercard (Nacional)"
+                width="55"
+                height="42"
+                src="{% static 'store/images/payments/payment_mastercardchile.png' %}"
+              />
+              <img
+                class="payment_method_logo"
+                title="American Express (Nacional)"
+                width="55"
+                height="42"
+                src="{% static 'store/images/payments/payment_amexchile.png' %}"
+              />
+              <img
+                class="payment_method_logo"
+                title="Visa"
+                width="55"
+                height="42"
+                src="{% static 'store/images/payments/payment_visa.png' %}"
+              />
+              <img
+                class="payment_method_logo"
+                title="Mastercard"
+                width="55"
+                height="42"
+                src="{% static 'store/images/payments/payment_mastercard.png' %}"
+              />
+              <img
+                class="payment_method_logo"
+                title="Visa Electron (nacional)"
+                width="55"
+                height="42"
+                src="{% static 'store/images/payments/payment_visaelectronboacompra.png' %}"
+              />
+              <img
+                class="payment_method_logo"
+                title="Maestro (nacional)"
+                width="55"
+                height="42"
+                src="{% static 'store/images/payments/payment_maestroboacompra.png' %}"
+              />
+            </p>
+            <div style="clear: left"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/c1a667f1b4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document
+        .getElementById("submit_payment_info_btn")
+        .addEventListener("click", () => {
+          document.getElementById("payment_info_tab").style.display = "none";
+          document.getElementById("review_order").style.display = "block";
+          document
+            .getElementById("payment_info_tab_select")
+            .classList.remove("cart_tab_on");
+          document
+            .getElementById("payment_info_tab_select")
+            .classList.add("cart_tab_off");
+          document
+            .getElementById("review_tab_select")
+            .classList.remove("cart_tab_off");
+          document
+            .getElementById("review_tab_select")
+            .classList.add("cart_tab_on");
+        });
+
+      document
+        .getElementById("back_to_payment_btn")
+        .addEventListener("click", () => {
+          document.getElementById("review_order").style.display = "none";
+          document.getElementById("payment_info_tab").style.display = "block";
+          document
+            .getElementById("review_tab_select")
+            .classList.remove("cart_tab_on");
+          document
+            .getElementById("review_tab_select")
+            .classList.add("cart_tab_off");
+          document
+            .getElementById("payment_info_tab_select")
+            .classList.remove("cart_tab_off");
+          document
+            .getElementById("payment_info_tab_select")
+            .classList.add("cart_tab_on");
+        });
+
+      document
+        .getElementById("place_order_btn")
+        .addEventListener("click", () => {
+          $.ajax({
+            url: '{% url "place_order" %}',
+            method: "POST",
+            headers: {
+              "X-CSRFToken": "{{ csrf_token }}",
+            },
+            success: () => {
+              window.location.href = '{% url "order_history" %}';
+            },
+            error: () => {
+              alert(
+                "Error al procesar la compra. Por favor, inténtalo de nuevo."
+              );
+            },
+          });
+        });
+    </script>
+  </body>
+</html>
