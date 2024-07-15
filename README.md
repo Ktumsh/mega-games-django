@@ -33,7 +33,7 @@ Mega Games Store es una página de venta de juegos online creada por y para uso 
 - **Sección principal**: Muestra la sección principal con accesos directos a secciones recomendadas.
 - **Ofertas especiales**: Sección de ofertas especiales para mostrar juegos en oferta.
 - **Ofertas del editor**: Sección para mostrar ofertas del editor de Activision.
-- **Dar me gusta a juegos**: Puedes darle me gusta a juegos y se guardará el estado mientras navegas por la página.
+- **Agregar a lista de deseados**: Puedes agregar juegos a la lista de deseos y se guardará su estado mientras navegan por la página.
 - **Carrito de compras**: Puedes añadir juegos al carrito de compras más no comprarlos.
 
 ### 📸 Capturas de pantalla de la web de Mega Games
@@ -176,6 +176,7 @@ mega-games-django/
 │   │       └── manifest.json   # Archivo manifiesto para PWA (irrelevante)
 │   ├── templates/     # Plantillas
 │   │   ├── about/     # Páginas de acerca de / comunidad / ayuda
+|   |   ├── account/   # Páginas de la gestión de la cuenta como historial de órdenes
 │   │   ├── profile/   # Páginas de perfil de usuario / notificaciones
 │   │   ├── store/     # Páginas de la tienda, inicio / ofertas / detalles de productos / carrito / entre otras
 │   │   └── user/      # Páginas de inicio de sesión / registro / logout
