@@ -73,7 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mega_games_django.wsgi.application'
 
-if ENVIRONMENT == 'production':
+if ENVIRONMENT == 'development':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -116,7 +116,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = 'media/'
 
-if ENVIRONMENT == 'production':
+if ENVIRONMENT == 'development':
     MEDIA_ROOT = BASE_DIR / 'media'
 else:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
