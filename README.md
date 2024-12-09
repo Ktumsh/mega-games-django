@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <a href="https://github.com/Ktumsh/mega-games-django">
-  <img src="store/static/store/images/mega-games-1200x630.png" alt="Logo" />
+  <img src="staticfiles/store/images/mega-games-1200x630.png" alt="Logo" />
 </a>
 
 <div align="center">
@@ -38,10 +38,10 @@ Mega Games Store es una página de venta de juegos online creada por y para uso 
 
 ### 📸 Capturas de pantalla de la web de Mega Games
 
-![Captura de pantalla en escritorio](store/static/store/images/mega-games-screenshot-01.png)
-![Captura de pantalla en escritorio](store/static/store/images/mega-games-screen-02.png)
-![Captura de pantalla en escritorio](store/static/store/images/mega-games-screen-03.png)
-![Captura de pantalla en móvil](store/static/store/images/mega-games-screen-04.png)
+![Captura de pantalla en escritorio](staticfiles/store/images/mega-games-screenshot-01.png)
+![Captura de pantalla en escritorio](staticfiles/store/images/mega-games-screen-02.png)
+![Captura de pantalla en escritorio](staticfiles/store/images/mega-games-screen-03.png)
+![Captura de pantalla en móvil](staticfiles/store/images/mega-games-screen-04.png)
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
