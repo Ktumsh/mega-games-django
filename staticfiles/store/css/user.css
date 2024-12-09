@@ -338,7 +338,7 @@ body.login .divider {
 @media screen and (max-width: 700px) {
   body.login .page_content {
     background: radial-gradient(#13101900 0%, #131019 85%) fixed no-repeat,
-      url("https://megagames.onrender.com/staticfiles/store/images/login_mobile_bg.jpg")
+      url("https://megagames.onrender.com/static/store/images/login_mobile_bg.jpg")
         center top no-repeat,
       #131019;
   }
