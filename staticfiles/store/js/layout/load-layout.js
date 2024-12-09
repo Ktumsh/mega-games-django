@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ${
         currentPath === "/login" || currentPath === "/join"
           ? ""
-          : `<div id="responsive_menu_logo"><img src="https://megagames.onrender.com/staticfiles/store/images/icons/header_menu_hamburger.webp" height="100%" /></div>`
+          : `<div id="responsive_menu_logo"><img src="https://megagames.onrender.com/static/store/images/icons/header_menu_hamburger.webp" height="100%" /></div>`
       }
       <div id="responsive_header_title">
         <div class="responsive_header_logo">
@@ -727,17 +727,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <footer id="footer" class="footer_page">
           <div class="footer_payment">
             <ul>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/wallet.svg" alt="" loading="lazy"></li>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/logo_steam_footer.png" alt="" loading="lazy"></li>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/dlocal_webpay.svg" alt="" loading="lazy"></li>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/braintree_paypal.svg" alt="" loading="lazy"></li>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/dlocal_credit_card.svg" alt="" loading="lazy"></li>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/ebanx_servipag_voucher.svg" alt="" loading="lazy"></li>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/ebanx_sencillito_voucher.svg" alt="" loading="lazy"></li>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/ebanx_multicaja_voucher.svg" alt="" loading="lazy"></li>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/ebanx_machpay_wallet.svg" alt="" loading="lazy"></li>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/boa_cl_transfer.svg" alt="" loading="lazy"></li>
-              <li><img src="https://megagames.onrender.com/staticfiles/store/images/payments/nuvei_crypto.svg" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/wallet.svg" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/logo_steam_footer.png" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/dlocal_webpay.svg" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/braintree_paypal.svg" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/dlocal_credit_card.svg" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/ebanx_servipag_voucher.svg" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/ebanx_sencillito_voucher.svg" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/ebanx_multicaja_voucher.svg" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/ebanx_machpay_wallet.svg" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/boa_cl_transfer.svg" alt="" loading="lazy"></li>
+              <li><img src="https://megagames.onrender.com/static/store/images/payments/nuvei_crypto.svg" alt="" loading="lazy"></li>
             </ul>
           </div>
           <div class="footer_page_ctn">
@@ -981,7 +981,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (hamburgerMenuOpenBtn.classList.contains("chevron")) {
           hamburgerMenuOpenBtn.innerHTML = "";
         } else {
-          hamburgerMenuOpenBtn.innerHTML = `<img src="https://megagames.onrender.com/staticfiles/store/images/icons/header_menu_hamburger.webp" height="100%" />`;
+          hamburgerMenuOpenBtn.innerHTML = `<img src="https://megagames.onrender.com/static/store/images/icons/header_menu_hamburger.webp" height="100%" />`;
         }
         hamburgerMenuSlot.classList.remove("mainmenu_active");
         headerTitle.innerHTML = `
@@ -1004,7 +1004,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (hamburgerMenuOpenBtn.classList.contains("chevron")) {
         hamburgerMenuOpenBtn.innerHTML = "";
       } else {
-        hamburgerMenuOpenBtn.innerHTML = `<img src="https://megagames.onrender.com/staticfiles/store/images/icons/header_menu_hamburger.webp" height="100%" />`;
+        hamburgerMenuOpenBtn.innerHTML = `<img src="https://megagames.onrender.com/static/store/images/icons/header_menu_hamburger.webp" height="100%" />`;
       }
       hamburgerMenuSlot.classList.toggle("mainmenu_active");
       if (hamburgerMenuSlot.classList.contains("mainmenu_active")) {

@@ -199,7 +199,7 @@ function addSearchEvents() {
           .attr("href", "javascript:void(0)")
           .attr("data-ds-options", "0").html(`
               <div class="match_background_image">
-                  <img src="https://megagames.onrender.com/staticfiles/store/images/search-bg.webp">
+                  <img src="https://megagames.onrender.com/static/store/images/search-bg.webp">
               </div>
               <div class="match_name">
                   <div>Etiqueta:</div>

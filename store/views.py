@@ -399,9 +399,17 @@ def search_games(request):
 # GÉNEROS
 def genres(request):
     file_path = os.path.join(settings.BASE_DIR, 'static', 'store', 'api', 'gen_cards.json')
+
+    if not os.path.exists(file_path):
+        return JsonResponse({"error": "Archivo gen_cards.json no encontrado"}, status=404)
+
     with open(file_path, 'r', encoding='utf-8') as file:
-        genres = json.load(file)
-    return JsonResponse(genres, safe=False)
+        try:
+            data = json.load(file)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "El archivo no contiene un JSON válido"}, status=400)
+
+    return JsonResponse(data, safe=False)
 
 #VIEWS ADICIONALES
 @login_required
