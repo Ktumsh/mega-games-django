@@ -259,7 +259,7 @@ div#store_search {
   width: auto;
   height: 30px;
   color: #a6a5a2;
-  background-image: url("https://store-megagames.onrender.com/assets/public/icons/search_icon_btn.webp");
+  background-image: url("https://megagames.onrender.com/staticfiles/store/images/icons/search_icon_btn.webp");
 }
 
 .searchbox {
@@ -2972,7 +2972,7 @@ a.pulldown_mobile {
 }
 
 #responsive_menu_logo.chevron {
-  background-image: url("https://store-megagames.onrender.com/assets/public/icons/chevron.png");
+  background-image: url("https://megagames.onrender.com/staticfiles/store/images/icons/chevron.png");
   background-size: 100% 100%;
   width: 26px;
   height: 16px;
@@ -3136,7 +3136,7 @@ a.pulldown_mobile {
 }
 
 .mainmenu_contents .menuitem .chevron {
-  background-image: url("https://store-megagames.onrender.com/assets/public/icons/chevron.png");
+  background-image: url("https://megagames.onrender.com/staticfiles/store/images/icons/chevron.png");
   background-size: 100% 100%;
   width: 18px;
   height: 10px;
