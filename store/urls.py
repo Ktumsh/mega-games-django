@@ -52,7 +52,8 @@ urlpatterns = [
     path('profile/<str:username>/', views.profile, name='profile'),
     path('wishlist/<str:username>/', views.wishlist, name='wishlist'),
     path('remove-from-wishlist/<int:game_id>/', views.remove_from_wishlist, name='remove_from_wishlist'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
