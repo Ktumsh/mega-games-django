@@ -28,7 +28,7 @@
     />
     <meta
       property="og:image"
-      content="https://megagames.onrender.com/staticfiles/store/images/mega-games-logo.webp"
+      content="{% static 'store/images/mega-games-logo.webp' %}"
     />
     <meta property="og:url" content="https://megagames.onrender.com/" />
     <meta property="og:site_name" content="Mega Games" />
@@ -43,14 +43,14 @@
     />
     <meta
       name="twitter:image"
-      content="https://megagames.onrender.com/staticfiles/store/images/mega-games-logo.webp"
+      content="{% static 'store/images/mega-games-logo.webp' %}"
     />
     <meta name="twitter:url" content="https://megagames.onrender.com/" />
     <title>Lista de deseados de {{ username }}</title>
     <link
       rel="icon"
       type="image/svg+xml"
-      href="https://megagames.onrender.com/staticfiles/store/images/mega-games-logo.svg"
+      href="{% static 'store/images/mega-games-logo.svg' %}"
     />
     <link href="{% static 'store/css/store.css' %}" rel="stylesheet" />
     <link href="{% static 'store/css/details.css' %}" rel="stylesheet" />

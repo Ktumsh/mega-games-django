@@ -18,7 +18,7 @@ def my_view(request, template_name, additional_context=None):
     context = {
         'is_authenticated': request.user.is_authenticated,
         'username': request.user.username if request.user.is_authenticated else '',
-        'profile_image_url': request.user.profile.image.url if request.user.is_authenticated else '',
+        'profile_image_url': request.user.profile.profile_image if request.user.is_authenticated else '',
         'wishlist_count': wishlist_count
     }
     if additional_context:
@@ -398,7 +398,7 @@ def search_games(request):
 
 # GÉNEROS
 def genres(request):
-    file_path = os.path.join(settings.BASE_DIR, 'store', 'static', 'store', 'api', 'gen_cards.json')
+    file_path = os.path.join(settings.BASE_DIR, 'static', 'store', 'api', 'gen_cards.json')
     with open(file_path, 'r', encoding='utf-8') as file:
         genres = json.load(file)
     return JsonResponse(genres, safe=False)

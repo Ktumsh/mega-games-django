@@ -1,4 +1,4 @@
-{% load static %} {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html class="responsive" lang="es">
   <head>
@@ -50,7 +50,7 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="https://megagames.onrender.com/staticfiles/store/images/mega-games-logo.svg"
+      href="{% static 'store/images/mega-games-logo.svg' %}"
     />
     <link href="{% static 'store/css/store.css' %}" rel="stylesheet" />
     <link href="{% static 'store/css/about.css' %}" rel="stylesheet" />
@@ -83,7 +83,7 @@
       window.userContext = {
         isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
         username: "{{ username }}",
-        profileImageUrl: "{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'store/images/profile/user-avatar.jpg' %}{% endif %}",
+        profileImageUrl: "{% if user.profile.image %}{{ user.profile.profile_image }}{% else %}{% static 'store/images/profile/user-avatar.jpg' %}{% endif %}",
         wishlistCount: {{ wishlist_count }}
       };
     </script>
