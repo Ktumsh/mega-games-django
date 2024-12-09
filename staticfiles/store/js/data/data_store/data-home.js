@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function cargarTarjetasGeneros() {
     try {
-      const response = await fetch("/api/genres");
+      const response = await fetch("/static/store/api/gen_cards.json");
       const tarjetas = await response.json();
       const genContainer = document.getElementById("genCardContainer");
 
