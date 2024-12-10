@@ -554,16 +554,11 @@ def get_game_details(request, template_name):
         'restriccion': game.restriccion,
         'origen': game.origen,
     }
-
-    wishlist_count = Like.objects.filter(user=request.user).count() if request.user.is_authenticated else 0
-    context = {
+    
+    additional_context = {
         'game': json.dumps(game_data),
-        'is_authenticated': request.user.is_authenticated,
-        'username': request.user.username if request.user.is_authenticated else '',
-        'profile_image_url': request.user.profile.image.url if request.user.is_authenticated else '',
-        'wishlist_count': wishlist_count
     }
-    return render(request, template_name, context)
+    return my_view(request, template_name, additional_context)
 
 
 @login_required
