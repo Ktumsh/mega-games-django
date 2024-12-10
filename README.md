@@ -159,21 +159,21 @@ Para que puedas orientarte mejor revisa los comentarios sobre la estructura del 
 mega-games-django/
 ├── media/ # Para guardar las imágenes pillow, de las imágenes de perfil
 ├── mega_games_django/ # Configuración del proyecto
+├── static/        # Archivos estáticos
+│   └── store/
+│       ├── api/     # Api de géneros (irrelevante)
+│       ├── css/
+│       ├── fonts/
+│       ├── images/
+│       ├── js/
+│       │   ├── compra/     # Gestión carrito
+│       │   ├── data/       # Carga de contenido / cards / productos / detalles de productos
+│       │   ├── events/     # Eventos generales como gestión de carruseles / modales / entre otros
+│       │   ├── layout/     # Carga dinámica del layout (contenido base de las páginas)
+│       │   ├── managment/  # Manejo de funciones como galería de imágenes / gestión de likes / notificaciones / buscador
+│       │   └── user/       # Manejo de la autenticación de usuario y eventos de este
+│       └── manifest.json   # Archivo manifiesto para PWA (irrelevante)
 ├── store/             # Aplicación principal
-│   ├── static/        # Archivos estáticos
-│   │   └── store/
-│   │       ├── api/     # Api de géneros (irrelevante)
-│   │       ├── css/
-│   │       ├── fonts/
-│   │       ├── images/
-│   │       ├── js/
-│   │       │   ├── compra/     # Gestión carrito
-│   │       │   ├── data/       # Carga de contenido / cards / productos / detalles de productos
-│   │       │   ├── events/     # Eventos generales como gestión de carruseles / modales / entre otros
-│   │       │   ├── layout/     # Carga dinámica del layout (contenido base de las páginas)
-│   │       │   ├── managment/  # Manejo de funciones como galería de imágenes / gestión de likes / notificaciones / buscador
-│   │       │   └── user/       # Manejo de la autenticación de usuario y eventos de este
-│   │       └── manifest.json   # Archivo manifiesto para PWA (irrelevante)
 │   ├── templates/     # Plantillas
 │   │   ├── about/     # Páginas de acerca de / comunidad / ayuda
 |   |   ├── account/   # Páginas de la gestión de la cuenta como historial de órdenes
