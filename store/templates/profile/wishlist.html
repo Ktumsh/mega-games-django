@@ -70,7 +70,7 @@
       window.userContext = {
         isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
         username: "{{ username }}",
-        profileImageUrl: "{{ profile_image_url }}",
+        profileImageUrl: "{{ avatar }}",
         wishlistCount: {{ wishlist_count }}
       };
     </script>
@@ -100,7 +100,7 @@
         <div class="cart_page_container">
           <div class="wishlist_header">
             <div class="profile_avatar_frame">
-              <img src="{{ profile_image_url }}" />
+              <img src="{{ avatar }}" />
             </div>
             <h2>Lista de deseados de {{ username }}</h2>
           </div>

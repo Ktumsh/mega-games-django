@@ -69,7 +69,7 @@
       window.userContext = {
         isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
         username: "{{ username }}",
-        profileImageUrl: "{{ profile_image_url }}"
+        profileImageUrl: "{{ avatar }}"
       };
     </script>
     <style>
@@ -144,7 +144,7 @@
                   <div class="playerAvatarAutoSizeInner">
                     <img
                       id="profile_avatar"
-                      src="{% if user.profile.image %}{{ user.profile.profile_image }}{% else %}{% static 'store/images/profile/user-avatar-animated.gif' %}{% endif %}"
+                      src="{{ avatar }}"
                       onclick="document.getElementById('id_image').click()"
                       style="cursor: pointer"
                     />

@@ -123,7 +123,14 @@ MEDIA_URL = 'media/'
 if ENVIRONMENT == 'development':
     MEDIA_ROOT = BASE_DIR / 'media'
 else:
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    STORAGES = {
+        "default": {
+            "BACKEND": 'cloudinary_storage.storage.MediaCloudinaryStorage',
+        },
+        "staticfiles": {
+            "BACKEND": 'django.contrib.staticfiles.storage.StaticFilesStorage',
+        },
+    }
     CLOUDINARY_STORAGE = {
         'CLOUDINARY_URL': env('CLOUDINARY_URL'),
     }

@@ -78,7 +78,7 @@
         productDetails: {{ game|safe }},
         isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
         username: "{{ username|escapejs }}",
-        profileImageUrl: "{{ profile_image_url|escapejs }}",
+        profileImageUrl: "{{ avatar }}",
         wishlistCount: {{ wishlist_count }}
       };
     </script>

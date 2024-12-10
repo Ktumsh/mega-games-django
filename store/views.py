@@ -18,7 +18,7 @@ def my_view(request, template_name, additional_context=None):
     context = {
         'is_authenticated': request.user.is_authenticated,
         'username': request.user.username if request.user.is_authenticated else '',
-        'profile_image_url': request.user.profile.profile_image if request.user.is_authenticated else '',
+        'avatar': request.user.profile.avatar if request.user.is_authenticated else '',
         'wishlist_count': wishlist_count
     }
     if additional_context:
@@ -470,7 +470,7 @@ def wishlist(request, username):
             'descuento': game.descuento,
             'disponible_en': plataformas,
             'background': game.background,
-            'added_on': liked_at
+            'added_on': liked_at,
         })
 
     additional_context = {

@@ -70,7 +70,7 @@
       window.userContext = {
         isAuthenticated: {{ is_authenticated|yesno:"true,false" }},
         username: "{{ username }}",
-        profileImageUrl: "{% if user.profile.image %}{{ user.profile.profile_image }}{% else %}{% static 'store/images/profile/user-avatar.jpg' %}{% endif %}",
+        profileImageUrl: "{{ avatar }}",
         wishlistCount: {{ wishlist_count }}
       };
     </script>
